@@ -18,7 +18,7 @@ echo "   Bundle: $BUNDLE_PREFIX.$APP_NAME"
 echo "   Target: iOS $DEPLOY_TARGET"
 
 # Create folder structure
-mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules,Core/AppState,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
+mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules,Core,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
 
 # Function to replace placeholders
 replace_placeholders() {
@@ -37,8 +37,6 @@ replace_placeholders "$TEMPLATE_DIR/CoreBuilder.swift" > "$APP_NAME/$APP_NAME/Ro
 replace_placeholders "$TEMPLATE_DIR/CoreInteractor.swift" > "$APP_NAME/$APP_NAME/Root/CoreRIB/CoreInteractor.swift"
 replace_placeholders "$TEMPLATE_DIR/CoreRouter.swift" > "$APP_NAME/$APP_NAME/Root/CoreRIB/CoreRouter.swift"
 replace_placeholders "$TEMPLATE_DIR/Dependencies.swift" > "$APP_NAME/$APP_NAME/Root/Dependencies.swift"
-replace_placeholders "$TEMPLATE_DIR/AppState.swift" > "$APP_NAME/$APP_NAME/Core/AppState/AppState.swift"
-
 # Generate project.yml
 replace_placeholders "$TEMPLATE_DIR/project.yml" > "$APP_NAME/project.yml"
 

@@ -59,7 +59,6 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    │   ├── Root/
    │   │   ├── {AppName}App.swift          ← templates/project/__AppName__App.swift
    │   │   ├── AppDelegate.swift            ← templates/project/AppDelegate.swift
-   │   │   ├── AppState.swift               ← templates/project/AppState.swift
    │   │   ├── CoreRIB/
    │   │   │   ├── CoreBuilder.swift        ← templates/project/CoreBuilder.swift
    │   │   │   ├── CoreInteractor.swift     ← templates/project/CoreInteractor.swift

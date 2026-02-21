@@ -8,26 +8,24 @@ import DependencyContainer
 @MainActor
 struct Dependencies {
     let container: DependencyContainer
-    let appState: AppState
 
     init(config: BuildConfiguration) {
+        let container = DependencyContainer()
+
         switch config {
         case .mock:
-            appState = AppState()
+            break
             // TODO: Initialize mock services
-            // authManager = AuthManager(service: MockAuthService())
+            // let authManager = AuthManager(service: MockAuthService())
+            // container.register(AuthManager.self, service: authManager)
         case .dev:
-            appState = AppState()
+            break
             // TODO: Initialize dev services
         case .prod:
-            appState = AppState()
+            break
             // TODO: Initialize prod services
         }
 
-        let container = DependencyContainer()
-        container.register(AppState.self, service: appState)
-        // TODO: Register other managers
-        // container.register(AuthManager.self, service: authManager)
         self.container = container
     }
 }
@@ -46,15 +44,11 @@ class DevPreview {
 
     var container: DependencyContainer {
         let container = DependencyContainer()
-        container.register(AppState.self, service: appState)
         // TODO: Register mock managers
         return container
     }
 
-    let appState: AppState
-
     init() {
-        self.appState = AppState()
         // TODO: Initialize mock managers
     }
 }

@@ -68,8 +68,7 @@ This is NOT classic VIPER. Key differences:
 │   │       ├── {Domain}ServiceProtocol.swift
 │   │       ├── Mock{Domain}Service.swift
 │   │       └── {X}{Domain}Service.swift
-│   └── AppState/
-│       └── AppState.swift
+│   └── ...
 ├── Components/                       # Reusable UI
 │   ├── Views/
 │   ├── ViewModifiers/
