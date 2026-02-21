@@ -14,12 +14,12 @@ struct ___VARIABLE_moduleName:identifier___Screen: View {
 	    .task {
             
 	    }
-            .onAppear {
+        .onAppear {
 
-            }
-            .onDisappear {
+        }
+        .onDisappear {
 
-            }
+        }
     }
 
     private var contentView: some View {
