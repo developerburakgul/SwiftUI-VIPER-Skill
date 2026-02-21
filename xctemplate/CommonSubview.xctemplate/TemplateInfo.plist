@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+
+  <key>Kind</key>
+  <string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
+
+  <key>Description</key>
+  <string>Creates a Common View with Entity, Config, and Binding.</string>
+
+  <key>Summary</key>
+  <string>Common View</string>
+
+  <key>Identifier</key>
+  <string>com.swiftui-viper.templates.common-view</string>
+
+  <key>SortOrder</key>
+  <integer>3</integer>
+
+  <key>SupportsSwiftPackage</key>
+  <true/>
+
+  <key>Categories</key>
+  <array>
+    <string>Source</string>
+  </array>
+
+  <key>Platforms</key>
+  <array>
+    <string>com.apple.platform.iphoneos</string>
+  </array>
+
+  <key>Options</key>
+  <array>
+    <dict>
+      <key>Identifier</key>
+      <string>viewName</string>
+      <key>Name</key>
+      <string>View Name</string>
+      <key>Description</key>
+      <string>The common view name (e.g. SharedInputView)</string>
+      <key>Type</key>
+      <string>text</string>
+      <key>Required</key>
+      <true/>
+      <key>Default</key>
+      <string>XView</string>
+    </dict>
+  </array>
+
+  <key>Definitions</key>
+  <dict>
+    <key>___VARIABLE_viewName:identifier___</key>
+    <dict>
+      <key>Nodes</key>
+      <array>
+        <string>___VARIABLE_viewName:identifier___/___VARIABLE_viewName:identifier___.swift</string>
+        <string>___VARIABLE_viewName:identifier___/Entity/___VARIABLE_viewName:identifier___Entity.swift</string>
+        <string>___VARIABLE_viewName:identifier___/Entity/___VARIABLE_viewName:identifier___Config.swift</string>
+        <string>___VARIABLE_viewName:identifier___/Entity/___VARIABLE_viewName:identifier___Binding.swift</string>
+      </array>
+    </dict>
+  </dict>
+
+  <key>Targets</key>
+  <array>
+    <dict>
+      <key>Target</key>
+      <string>___VARIABLE_targetName:identifier___</string>
+    </dict>
+  </array>
+
+</dict>
+</plist>

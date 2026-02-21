@@ -1,0 +1,86 @@
+name: __AppName__
+options:
+  bundleIdPrefix: __BundleIdPrefix__
+  deploymentTarget:
+    iOS: "__DeploymentTarget__"
+  xcodeVersion: "16.0"
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    TARGETED_DEVICE_FAMILY: "1"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+
+configs:
+  Debug Mock: debug
+  Debug Dev: debug
+  Release Prod: release
+
+targets:
+  __AppName__:
+    type: application
+    platform: iOS
+    sources:
+      - path: __AppName__
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: __BundleIdPrefix__.__AppName__
+        INFOPLIST_FILE: __AppName__/Info.plist
+      configs:
+        Debug Mock:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited) MOCK
+        Debug Dev:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited) DEV
+        Release Prod:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited) PROD
+    dependencies:
+      # Base packages (always included)
+      - package: BurakKit
+      - package: SwiftfulRouting
+      # Optional packages — uncomment as needed
+      # - package: DynamicTheme
+      # - package: RevenueCat
+      # - package: RevenueCatUI
+      # - package: SDWebImageSwiftUI
+      # - package: SwiftfulUtilities
+      # - package: IdentifiableByString
+
+packages:
+  BurakKit:
+    url: https://github.com/__GitHubUser__/BurakKit
+    from: "1.0.0"
+  SwiftfulRouting:
+    url: https://github.com/SwiftfulThinking/SwiftfulRouting
+    from: "6.0.0"
+  # Optional packages — uncomment as needed
+  # DynamicTheme:
+  #   url: https://github.com/nicksarno/DynamicTheme
+  #   from: "1.0.0"
+  # RevenueCat:
+  #   url: https://github.com/RevenueCat/purchases-ios-spm
+  #   from: "5.0.0"
+  # SDWebImageSwiftUI:
+  #   url: https://github.com/SDWebImage/SDWebImageSwiftUI
+  #   from: "3.0.0"
+
+schemes:
+  __AppName__-Mock:
+    build:
+      targets:
+        __AppName__: all
+    run:
+      config: Debug Mock
+  __AppName__-Dev:
+    build:
+      targets:
+        __AppName__: all
+    run:
+      config: Debug Dev
+  __AppName__-Prod:
+    build:
+      targets:
+        __AppName__: all
+    run:
+      config: Release Prod

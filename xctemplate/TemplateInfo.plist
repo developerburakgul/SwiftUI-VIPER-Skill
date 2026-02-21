@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+
+  <key>Kind</key>
+  <string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
+
+  <key>Description</key>
+  <string>Creates a SwiftUI VIPER module with Presenter, Interactor, Router, Screen, and Entity.</string>
+
+  <key>Summary</key>
+  <string>SwiftUI VIPER Module</string>
+
+  <key>Identifier</key>
+  <string>com.swiftui-viper.templates.module</string>
+
+  <key>SortOrder</key>
+  <integer>1</integer>
+
+  <key>SupportsSwiftPackage</key>
+  <true/>
+
+  <key>Categories</key>
+  <array>
+    <string>Source</string>
+  </array>
+
+  <key>Platforms</key>
+  <array>
+    <string>com.apple.platform.iphoneos</string>
+  </array>
+
+  <key>Options</key>
+  <array>
+    <dict>
+      <key>Identifier</key>
+      <string>moduleName</string>
+      <key>Name</key>
+      <string>Module Name</string>
+      <key>Description</key>
+      <string>The VIPER module name (e.g. Splash, Home, Settings)</string>
+      <key>Type</key>
+      <string>text</string>
+      <key>Required</key>
+      <true/>
+      <key>Default</key>
+      <string>XModule</string>
+    </dict>
+  </array>
+
+  <key>Definitions</key>
+  <dict>
+    <key>___VARIABLE_moduleName:identifier___</key>
+    <dict>
+      <key>Nodes</key>
+      <array>
+        <string>___VARIABLE_moduleName:identifier___/___VARIABLE_moduleName:identifier___Screen.swift</string>
+        <string>___VARIABLE_moduleName:identifier___/___VARIABLE_moduleName:identifier___Presenter.swift</string>
+        <string>___VARIABLE_moduleName:identifier___/___VARIABLE_moduleName:identifier___Interactor.swift</string>
+        <string>___VARIABLE_moduleName:identifier___/___VARIABLE_moduleName:identifier___Router.swift</string>
+        <string>___VARIABLE_moduleName:identifier___/Entity/___VARIABLE_moduleName:identifier___Entity.swift</string>
+      </array>
+    </dict>
+  </dict>
+
+  <key>Targets</key>
+  <array>
+    <dict>
+      <key>Target</key>
+      <string>___VARIABLE_targetName:identifier___</string>
+    </dict>
+  </array>
+
+</dict>
+</plist>
