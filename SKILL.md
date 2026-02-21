@@ -149,6 +149,12 @@ Read `references/architecture.md` and `references/patterns.md` for detailed rule
 
 ---
 
+### 6. DynamicColor / Theme colors
+
+Read `references/dynamic-color.md` for `@DynamicColor`, `ThemeStore`, `Color.init(hex:)` usage and `{AppName}Design.swift` pattern.
+
+---
+
 ## Key Rules (Always Apply)
 
 1. **@Observable, NOT @ObservableObject** — Use Observation framework
@@ -157,24 +163,15 @@ Read `references/architecture.md` and `references/patterns.md` for detailed rule
 4. **Entity goes to Presenter**, not View
 5. **Protocol conformance via extension** — `extension CoreInteractor: {Module}Interactor { }`
 6. **SwiftfulRouting** — `RouterView`, `Router`, `.showScreen(.push/.sheet/.fullScreenCover)`
-7. **DependencyContainer from BurakKit** — `import BurakKit`
+7. **BurakKit modules** — `import DependencyContainer` for DI, `import DynamicColor` for theme-aware colors
 8. **Mock-first development** — Every service has a Mock version
 9. **Screen suffix** — Views are `{Module}Screen`, not `{Module}View`
 10. **3 Build Configurations** — Mock, Dev, Prod
 
 ## SPM Dependencies
 
-### Base (always included)
-| Package | Usage |
-|---------|-------|
-| BurakKit | DependencyContainer, shared utilities |
-| SwiftfulRouting | Navigation (RouterView, Router) |
-
-### Optional (add based on project needs)
-| Package | Usage |
-|---------|-------|
-| DynamicTheme | Theme management (light/dark/system) |
-| RevenueCat / RevenueCatUI | In-App Purchase |
-| SDWebImageSwiftUI | Remote image loading |
-| SwiftfulUtilities | Utility helpers |
-| IdentifiableByString | StringIdentifiable protocol |
+| Package | Version | Modules | Usage |
+|---------|---------|---------|-------|
+| BurakKit | 0.1.0 | `DependencyContainer` | DI container for resolving managers |
+| | | `DynamicColor` | Theme-aware colors (`@DynamicColor`), `ThemeStore`, `AppTheme`, `Color.init(hex:)` |
+| SwiftfulRouting | 6.1.9 | — | Navigation (`RouterView`, `AnyRouter`, `.showScreen`) |

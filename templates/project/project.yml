@@ -36,34 +36,16 @@ targets:
         Release Prod:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited) PROD
     dependencies:
-      # Base packages (always included)
       - package: BurakKit
       - package: SwiftfulRouting
-      # Optional packages — uncomment as needed
-      # - package: DynamicTheme
-      # - package: RevenueCat
-      # - package: RevenueCatUI
-      # - package: SDWebImageSwiftUI
-      # - package: SwiftfulUtilities
-      # - package: IdentifiableByString
 
 packages:
   BurakKit:
     url: https://github.com/__GitHubUser__/BurakKit
-    from: "1.0.0"
+    from: "0.1.0"
   SwiftfulRouting:
     url: https://github.com/SwiftfulThinking/SwiftfulRouting
     from: "6.0.0"
-  # Optional packages — uncomment as needed
-  # DynamicTheme:
-  #   url: https://github.com/nicksarno/DynamicTheme
-  #   from: "1.0.0"
-  # RevenueCat:
-  #   url: https://github.com/RevenueCat/purchases-ios-spm
-  #   from: "5.0.0"
-  # SDWebImageSwiftUI:
-  #   url: https://github.com/SDWebImage/SDWebImageSwiftUI
-  #   from: "3.0.0"
 
 schemes:
   __AppName__-Mock:

@@ -3,7 +3,7 @@
 //
 
 import SwiftUI
-import BurakKit
+import DependencyContainer
 
 @MainActor
 struct Dependencies {
