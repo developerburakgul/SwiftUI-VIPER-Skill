@@ -42,31 +42,43 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 1. Read `references/architecture.md` for full pattern details
 2. Read ALL files in `templates/project/` for boilerplate code
 3. Ask user for: App name, bundle ID, deployment target, initial modules
-4. Generate project structure:
+4. **Create all folders first** (XcodeGen needs these on disk):
+   ```bash
+   mkdir -p {AppName}/{AppName}/Root/CoreRIB
+   mkdir -p {AppName}/{AppName}/Modules
+   mkdir -p {AppName}/{AppName}/Core
+   mkdir -p {AppName}/{AppName}/Components
+   mkdir -p {AppName}/{AppName}/Design
+   mkdir -p {AppName}/{AppName}/Extensions
+   mkdir -p {AppName}/{AppName}/Utilities
+   ```
+5. Generate files from templates into the correct paths:
    ```
    {AppName}/
    ├── {AppName}/
    │   ├── Root/
-   │   │   ├── {AppName}App.swift
-   │   │   ├── AppDelegate.swift
+   │   │   ├── {AppName}App.swift          ← templates/project/__AppName__App.swift
+   │   │   ├── AppDelegate.swift            ← templates/project/AppDelegate.swift
+   │   │   ├── AppState.swift               ← templates/project/AppState.swift
    │   │   ├── CoreRIB/
-   │   │   │   ├── CoreBuilder.swift
-   │   │   │   ├── CoreInteractor.swift
-   │   │   │   └── CoreRouter.swift
-   │   │   └── Dependencies.swift
-   │   ├── Modules/
-   │   ├── Core/
-   │   ├── Components/
+   │   │   │   ├── CoreBuilder.swift        ← templates/project/CoreBuilder.swift
+   │   │   │   ├── CoreInteractor.swift     ← templates/project/CoreInteractor.swift
+   │   │   │   └── CoreRouter.swift         ← templates/project/CoreRouter.swift
+   │   │   └── Dependencies.swift           ← templates/project/Dependencies.swift
+   │   ├── Modules/                          (empty — modules added later)
+   │   ├── Core/                             (empty — services added later)
+   │   ├── Components/                       (empty — subviews added later)
    │   ├── Design/
-   │   │   └── {AppName}Design.swift
-   │   ├── Extensions/
-   │   └── Utilities/
-   ├── project.yml
-   └── .gitignore
+   │   │   └── {AppName}Design.swift        ← generate from references/dynamic-color.md pattern
+   │   ├── Extensions/                       (empty)
+   │   └── Utilities/                        (empty)
+   ├── project.yml                           ← templates/project/project.yml
+   └── .gitignore                            ← templates/project/.gitignore.template
    ```
-5. Generate `project.yml` from template, replacing placeholders
-6. Run: `cd {AppName} && xcodegen generate`
-7. Optionally run: `open {AppName}.xcodeproj`
+6. Replace all `__AppName__`, `__BundleIdPrefix__`, `__DeploymentTarget__`, `__GitHubUser__` placeholders
+7. Generate `project.yml` from template, replacing placeholders
+8. Run: `cd {AppName} && xcodegen generate`
+9. Optionally run: `open {AppName}.xcodeproj`
 
 **Template files to read:** `templates/project/*`
 
@@ -75,11 +87,11 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 ### 2. "Create new module/screen" / "Yeni modül/ekran oluştur"
 
 **Steps:**
-1. Read `templates/module/` for all 5 template files
+1. Read `xctemplate/___VARIABLE_moduleName:identifier___/` for all 5 template files
 2. Read `references/naming.md` for naming conventions
 3. Ask user for: Module name (e.g., "Settings", "Receipt")
 4. Create folder: `Modules/{ModuleName}/`
-5. Generate 5 files from templates, replacing `__ModuleName__` placeholder:
+5. Generate 5 files from templates, replacing `___VARIABLE_moduleName:identifier___` placeholder:
    - `{ModuleName}Screen.swift`
    - `{ModuleName}Presenter.swift`
    - `{ModuleName}Interactor.swift`
@@ -89,7 +101,7 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 7. **Update CoreBuilder.swift** — Add factory method
 8. **Update CoreRouter.swift** — Add navigation method (if needed)
 
-**Template files to read:** `templates/module/*`
+**Template files to read:** `xctemplate/___VARIABLE_moduleName:identifier___/*`
 
 ---
 
@@ -149,6 +161,12 @@ Read `references/architecture.md` and `references/patterns.md` for detailed rule
 
 ---
 
+### 6. DynamicColor / Theme colors
+
+Read `references/dynamic-color.md` for `@DynamicColor`, `ThemeStore`, `Color.init(hex:)` usage and `{AppName}Design.swift` pattern.
+
+---
+
 ## Key Rules (Always Apply)
 
 1. **@Observable, NOT @ObservableObject** — Use Observation framework
@@ -157,24 +175,15 @@ Read `references/architecture.md` and `references/patterns.md` for detailed rule
 4. **Entity goes to Presenter**, not View
 5. **Protocol conformance via extension** — `extension CoreInteractor: {Module}Interactor { }`
 6. **SwiftfulRouting** — `RouterView`, `Router`, `.showScreen(.push/.sheet/.fullScreenCover)`
-7. **DependencyContainer from BurakKit** — `import BurakKit`
+7. **BurakKit modules** — `import DependencyContainer` for DI, `import DynamicColor` for theme-aware colors
 8. **Mock-first development** — Every service has a Mock version
 9. **Screen suffix** — Views are `{Module}Screen`, not `{Module}View`
 10. **3 Build Configurations** — Mock, Dev, Prod
 
 ## SPM Dependencies
 
-### Base (always included)
-| Package | Usage |
-|---------|-------|
-| BurakKit | DependencyContainer, shared utilities |
-| SwiftfulRouting | Navigation (RouterView, Router) |
-
-### Optional (add based on project needs)
-| Package | Usage |
-|---------|-------|
-| DynamicTheme | Theme management (light/dark/system) |
-| RevenueCat / RevenueCatUI | In-App Purchase |
-| SDWebImageSwiftUI | Remote image loading |
-| SwiftfulUtilities | Utility helpers |
-| IdentifiableByString | StringIdentifiable protocol |
+| Package | Version | Modules | Usage |
+|---------|---------|---------|-------|
+| BurakKit | 0.1.0 | `DependencyContainer` | DI container for resolving managers |
+| | | `DynamicColor` | Theme-aware colors (`@DynamicColor`), `ThemeStore`, `AppTheme`, `Color.init(hex:)` |
+| SwiftfulRouting | 6.1.9 | — | Navigation (`RouterView`, `AnyRouter`, `.showScreen`) |
