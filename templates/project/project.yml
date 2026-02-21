@@ -37,11 +37,14 @@ targets:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited) PROD
     dependencies:
       - package: BurakKit
+        product: DependencyContainer
+      - package: BurakKit
+        product: DynamicColor
       - package: SwiftfulRouting
 
 packages:
   BurakKit:
-    url: https://github.com/developerburakguk/BurakKit.git
+    url: https://github.com/developerburakgul/BurakKit.git
     from: "0.1.0"
   SwiftfulRouting:
     url: https://github.com/SwiftfulThinking/SwiftfulRouting.git
