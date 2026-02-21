@@ -44,6 +44,18 @@ This is NOT classic VIPER. Key differences:
 │   │   └── CoreRouter.swift          # SINGLE router struct — all navigation
 │   └── Dependencies.swift            # DI setup, DevPreview, mock/dev/prod config
 ├── Modules/                          # Feature modules (each follows VIPER)
+│   ├── Splash/                       # Giriş ekranı — her açılışta gösterilir
+│   │   ├── SplashScreen.swift
+│   │   ├── SplashPresenter.swift
+│   │   ├── SplashInteractor.swift
+│   │   ├── SplashRouter.swift
+│   │   └── SplashEntity.swift
+│   ├── Onboarding/                   # Default module — ilk açılışta gösterilir
+│   │   ├── OnboardingScreen.swift
+│   │   ├── OnboardingPresenter.swift
+│   │   ├── OnboardingInteractor.swift
+│   │   ├── OnboardingRouter.swift
+│   │   └── OnboardingEntity.swift
 │   ├── {ModuleName}/
 │   │   ├── {ModuleName}Screen.swift
 │   │   ├── {ModuleName}Presenter.swift
@@ -60,6 +72,12 @@ This is NOT classic VIPER. Key differences:
 │   │               └── {SubviewName}Config.swift
 │   └── ...
 ├── Core/                             # Service domains
+│   ├── Onboarding/                   # Default service — UserDefaults persistence
+│   │   ├── OnboardingManager.swift
+│   │   └── Service/
+│   │       ├── OnboardingServiceProtocol.swift
+│   │       ├── OnboardingService.swift
+│   │       └── MockOnboardingService.swift
 │   ├── {Domain}/
 │   │   ├── {Domain}Manager.swift
 │   │   ├── Models/

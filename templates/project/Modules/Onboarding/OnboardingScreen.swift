@@ -1,0 +1,63 @@
+//
+//  OnboardingScreen.swift
+//
+
+import SwiftUI
+import SwiftfulRouting
+
+struct OnboardingScreen: View {
+
+    @State var presenter: OnboardingPresenter
+
+    var body: some View {
+        contentView
+            .task {
+
+            }
+    }
+
+    private var contentView: some View {
+        VStack(spacing: 24) {
+            Spacer()
+
+            Image(systemName: "hand.wave.fill")
+                .font(.system(size: 64))
+                .foregroundStyle(.blue)
+
+            Text("__AppName__'a Hoş Geldiniz")
+                .font(.title)
+                .fontWeight(.bold)
+
+            Text("Başlamak için aşağıdaki butona tıklayın.")
+                .font(.body)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 32)
+
+            Spacer()
+
+            Button {
+                presenter.onCompletePressed()
+            } label: {
+                Text("Başla")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(.blue)
+                    .foregroundStyle(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 32)
+        }
+    }
+}
+
+#Preview {
+    let container = DevPreview.shared.container
+    let builder = CoreBuilder(interactor: CoreInteractor(container: container))
+
+    return RouterView { router in
+        builder.onboardingScreen(router: router)
+    }
+}

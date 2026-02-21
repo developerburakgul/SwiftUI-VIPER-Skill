@@ -64,8 +64,26 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    │   │   │   ├── CoreInteractor.swift     ← templates/project/CoreInteractor.swift
    │   │   │   └── CoreRouter.swift         ← templates/project/CoreRouter.swift
    │   │   └── Dependencies.swift           ← templates/project/Dependencies.swift
-   │   ├── Modules/                          (empty — modules added later)
-   │   ├── Core/                             (empty — services added later)
+   │   ├── Modules/
+   │   │   ├── Splash/                        ← templates/project/Modules/Splash/* (her açılışta gösterilir)
+   │   │   │   ├── SplashScreen.swift
+   │   │   │   ├── SplashPresenter.swift
+   │   │   │   ├── SplashInteractor.swift
+   │   │   │   ├── SplashRouter.swift
+   │   │   │   └── SplashEntity.swift
+   │   │   └── Onboarding/                   ← templates/project/Modules/Onboarding/* (default modül)
+   │   │       ├── OnboardingScreen.swift
+   │   │       ├── OnboardingPresenter.swift
+   │   │       ├── OnboardingInteractor.swift
+   │   │       ├── OnboardingRouter.swift
+   │   │       └── OnboardingEntity.swift
+   │   ├── Core/
+   │   │   └── Onboarding/                   ← templates/project/Core/Onboarding/* (default servis)
+   │   │       ├── OnboardingManager.swift
+   │   │       └── Service/
+   │   │           ├── OnboardingServiceProtocol.swift
+   │   │           ├── OnboardingService.swift
+   │   │           └── MockOnboardingService.swift
    │   ├── Components/                       (empty — subviews added later)
    │   ├── Design/
    │   │   └── {AppName}Design.swift        ← generate from references/dynamic-color.md pattern

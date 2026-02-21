@@ -10,13 +10,32 @@ struct CoreBuilder {
     let interactor: CoreInteractor
 
     func appView() -> some View {
-        // TODO: Replace with your root view
         RouterView { router in
-            Text("Welcome to __AppName__")
+            splashScreen(router: router)
         }
     }
 
     // MARK: - Module Factories
+
+    func splashScreen(router: Router, entity: SplashEntity = SplashEntity()) -> some View {
+        SplashScreen(
+            presenter: SplashPresenter(
+                interactor: interactor,
+                router: CoreRouter(router: router, builder: self),
+                entity: entity
+            )
+        )
+    }
+
+    func onboardingScreen(router: Router, entity: OnboardingEntity = OnboardingEntity()) -> some View {
+        OnboardingScreen(
+            presenter: OnboardingPresenter(
+                interactor: interactor,
+                router: CoreRouter(router: router, builder: self),
+                entity: entity
+            )
+        )
+    }
 
     // Example:
     // func someScreen(router: Router, entity: SomeEntity = SomeEntity()) -> some View {

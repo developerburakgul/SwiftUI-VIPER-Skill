@@ -12,6 +12,19 @@ struct CoreRouter {
 
     // MARK: - Segues
 
+    func showOnboardingScreen(entity: OnboardingEntity = OnboardingEntity()) {
+        router.showScreen(.push) { router in
+            builder.onboardingScreen(router: router, entity: entity)
+        }
+    }
+
+    func showHomeScreen() {
+        // TODO: Home modülünü oluşturduktan sonra buraya ekleyin
+        // router.showScreen(.push) { router in
+        //     builder.homeScreen(router: router)
+        // }
+    }
+
     // Example:
     // func showSomeScreen(entity: SomeEntity) {
     //     router.showScreen(.push) { router in

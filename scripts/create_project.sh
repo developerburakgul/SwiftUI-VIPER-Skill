@@ -18,7 +18,7 @@ echo "   Bundle: $BUNDLE_PREFIX.$APP_NAME"
 echo "   Target: iOS $DEPLOY_TARGET"
 
 # Create folder structure
-mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules,Core,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
+mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules/{Splash,Onboarding},Core/Onboarding/Service,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
 
 # Function to replace placeholders
 replace_placeholders() {
@@ -37,6 +37,27 @@ replace_placeholders "$TEMPLATE_DIR/CoreBuilder.swift" > "$APP_NAME/$APP_NAME/Ro
 replace_placeholders "$TEMPLATE_DIR/CoreInteractor.swift" > "$APP_NAME/$APP_NAME/Root/CoreRIB/CoreInteractor.swift"
 replace_placeholders "$TEMPLATE_DIR/CoreRouter.swift" > "$APP_NAME/$APP_NAME/Root/CoreRIB/CoreRouter.swift"
 replace_placeholders "$TEMPLATE_DIR/Dependencies.swift" > "$APP_NAME/$APP_NAME/Root/Dependencies.swift"
+
+# Generate Splash module files
+replace_placeholders "$TEMPLATE_DIR/Modules/Splash/SplashScreen.swift" > "$APP_NAME/$APP_NAME/Modules/Splash/SplashScreen.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Splash/SplashPresenter.swift" > "$APP_NAME/$APP_NAME/Modules/Splash/SplashPresenter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Splash/SplashInteractor.swift" > "$APP_NAME/$APP_NAME/Modules/Splash/SplashInteractor.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Splash/SplashRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Splash/SplashRouter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Splash/SplashEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Splash/SplashEntity.swift"
+
+# Generate Onboarding module files
+replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingScreen.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingScreen.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingPresenter.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingPresenter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingInteractor.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingInteractor.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingRouter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingEntity.swift"
+
+# Generate Onboarding service files
+replace_placeholders "$TEMPLATE_DIR/Core/Onboarding/Service/OnboardingServiceProtocol.swift" > "$APP_NAME/$APP_NAME/Core/Onboarding/Service/OnboardingServiceProtocol.swift"
+replace_placeholders "$TEMPLATE_DIR/Core/Onboarding/Service/OnboardingService.swift" > "$APP_NAME/$APP_NAME/Core/Onboarding/Service/OnboardingService.swift"
+replace_placeholders "$TEMPLATE_DIR/Core/Onboarding/Service/MockOnboardingService.swift" > "$APP_NAME/$APP_NAME/Core/Onboarding/Service/MockOnboardingService.swift"
+replace_placeholders "$TEMPLATE_DIR/Core/Onboarding/OnboardingManager.swift" > "$APP_NAME/$APP_NAME/Core/Onboarding/OnboardingManager.swift"
+
 # Generate project.yml
 replace_placeholders "$TEMPLATE_DIR/project.yml" > "$APP_NAME/project.yml"
 
