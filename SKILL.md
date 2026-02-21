@@ -42,31 +42,43 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 1. Read `references/architecture.md` for full pattern details
 2. Read ALL files in `templates/project/` for boilerplate code
 3. Ask user for: App name, bundle ID, deployment target, initial modules
-4. Generate project structure:
+4. **Create all folders first** (XcodeGen needs these on disk):
+   ```bash
+   mkdir -p {AppName}/{AppName}/Root/CoreRIB
+   mkdir -p {AppName}/{AppName}/Modules
+   mkdir -p {AppName}/{AppName}/Core
+   mkdir -p {AppName}/{AppName}/Components
+   mkdir -p {AppName}/{AppName}/Design
+   mkdir -p {AppName}/{AppName}/Extensions
+   mkdir -p {AppName}/{AppName}/Utilities
+   ```
+5. Generate files from templates into the correct paths:
    ```
    {AppName}/
    ├── {AppName}/
    │   ├── Root/
-   │   │   ├── {AppName}App.swift
-   │   │   ├── AppDelegate.swift
+   │   │   ├── {AppName}App.swift          ← templates/project/__AppName__App.swift
+   │   │   ├── AppDelegate.swift            ← templates/project/AppDelegate.swift
+   │   │   ├── AppState.swift               ← templates/project/AppState.swift
    │   │   ├── CoreRIB/
-   │   │   │   ├── CoreBuilder.swift
-   │   │   │   ├── CoreInteractor.swift
-   │   │   │   └── CoreRouter.swift
-   │   │   └── Dependencies.swift
-   │   ├── Modules/
-   │   ├── Core/
-   │   ├── Components/
+   │   │   │   ├── CoreBuilder.swift        ← templates/project/CoreBuilder.swift
+   │   │   │   ├── CoreInteractor.swift     ← templates/project/CoreInteractor.swift
+   │   │   │   └── CoreRouter.swift         ← templates/project/CoreRouter.swift
+   │   │   └── Dependencies.swift           ← templates/project/Dependencies.swift
+   │   ├── Modules/                          (empty — modules added later)
+   │   ├── Core/                             (empty — services added later)
+   │   ├── Components/                       (empty — subviews added later)
    │   ├── Design/
-   │   │   └── {AppName}Design.swift
-   │   ├── Extensions/
-   │   └── Utilities/
-   ├── project.yml
-   └── .gitignore
+   │   │   └── {AppName}Design.swift        ← generate from references/dynamic-color.md pattern
+   │   ├── Extensions/                       (empty)
+   │   └── Utilities/                        (empty)
+   ├── project.yml                           ← templates/project/project.yml
+   └── .gitignore                            ← templates/project/.gitignore.template
    ```
-5. Generate `project.yml` from template, replacing placeholders
-6. Run: `cd {AppName} && xcodegen generate`
-7. Optionally run: `open {AppName}.xcodeproj`
+6. Replace all `__AppName__`, `__BundleIdPrefix__`, `__DeploymentTarget__`, `__GitHubUser__` placeholders
+7. Generate `project.yml` from template, replacing placeholders
+8. Run: `cd {AppName} && xcodegen generate`
+9. Optionally run: `open {AppName}.xcodeproj`
 
 **Template files to read:** `templates/project/*`
 
