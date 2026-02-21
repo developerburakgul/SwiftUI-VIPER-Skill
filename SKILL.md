@@ -71,12 +71,30 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    │   │   │   ├── SplashInteractor.swift
    │   │   │   ├── SplashRouter.swift
    │   │   │   └── SplashEntity.swift
-   │   │   └── Onboarding/                   ← templates/project/Modules/Onboarding/* (default modül)
-   │   │       ├── OnboardingScreen.swift
-   │   │       ├── OnboardingPresenter.swift
-   │   │       ├── OnboardingInteractor.swift
-   │   │       ├── OnboardingRouter.swift
-   │   │       └── OnboardingEntity.swift
+   │   │   ├── Onboarding/                   ← templates/project/Modules/Onboarding/* (default modül)
+   │   │   │   ├── OnboardingScreen.swift
+   │   │   │   ├── OnboardingPresenter.swift
+   │   │   │   ├── OnboardingInteractor.swift
+   │   │   │   ├── OnboardingRouter.swift
+   │   │   │   └── OnboardingEntity.swift
+   │   │   ├── Home/                          ← templates/project/Modules/Home/* (TabView container)
+   │   │   │   ├── HomeScreen.swift
+   │   │   │   ├── HomePresenter.swift
+   │   │   │   ├── HomeInteractor.swift
+   │   │   │   ├── HomeRouter.swift
+   │   │   │   └── HomeEntity.swift
+   │   │   ├── Favorites/                     ← templates/project/Modules/Favorites/* (tab modülü)
+   │   │   │   ├── FavoritesScreen.swift
+   │   │   │   ├── FavoritesPresenter.swift
+   │   │   │   ├── FavoritesInteractor.swift
+   │   │   │   ├── FavoritesRouter.swift
+   │   │   │   └── FavoritesEntity.swift
+   │   │   └── Settings/                      ← templates/project/Modules/Settings/* (tab modülü)
+   │   │       ├── SettingsScreen.swift
+   │   │       ├── SettingsPresenter.swift
+   │   │       ├── SettingsInteractor.swift
+   │   │       ├── SettingsRouter.swift
+   │   │       └── SettingsEntity.swift
    │   ├── Core/
    │   │   └── Onboarding/                   ← templates/project/Core/Onboarding/* (default servis)
    │   │       ├── OnboardingManager.swift
@@ -196,6 +214,7 @@ Read `references/dynamic-color.md` for `@DynamicColor`, `ThemeStore`, `Color.ini
 8. **Mock-first development** — Every service has a Mock version
 9. **Screen suffix** — Views are `{Module}Screen`, not `{Module}View`
 10. **3 Build Configurations** — Mock, Dev, Prod
+11. **No NavigationStack** — All navigation is managed by SwiftfulRouting (`RouterView`, `Router`, `.showScreen`). Never use `NavigationStack` or `NavigationView`
 
 ## SPM Dependencies
 

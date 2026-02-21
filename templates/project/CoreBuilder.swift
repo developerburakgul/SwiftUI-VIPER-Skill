@@ -37,6 +37,37 @@ struct CoreBuilder {
         )
     }
 
+    func homeScreen(router: Router, entity: HomeEntity = HomeEntity()) -> some View {
+        HomeScreen(
+            presenter: HomePresenter(
+                interactor: interactor,
+                router: CoreRouter(router: router, builder: self),
+                entity: entity,
+                builder: self
+            )
+        )
+    }
+
+    func favoritesScreen(router: Router, entity: FavoritesEntity = FavoritesEntity()) -> some View {
+        FavoritesScreen(
+            presenter: FavoritesPresenter(
+                interactor: interactor,
+                router: CoreRouter(router: router, builder: self),
+                entity: entity
+            )
+        )
+    }
+
+    func settingsScreen(router: Router, entity: SettingsEntity = SettingsEntity()) -> some View {
+        SettingsScreen(
+            presenter: SettingsPresenter(
+                interactor: interactor,
+                router: CoreRouter(router: router, builder: self),
+                entity: entity
+            )
+        )
+    }
+
     // Example:
     // func someScreen(router: Router, entity: SomeEntity = SomeEntity()) -> some View {
     //     SomeScreen(

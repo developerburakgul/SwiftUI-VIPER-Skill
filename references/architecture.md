@@ -56,6 +56,24 @@ This is NOT classic VIPER. Key differences:
 │   │   ├── OnboardingInteractor.swift
 │   │   ├── OnboardingRouter.swift
 │   │   └── OnboardingEntity.swift
+│   ├── Home/                          # TabView container — ana ekran
+│   │   ├── HomeScreen.swift
+│   │   ├── HomePresenter.swift
+│   │   ├── HomeInteractor.swift
+│   │   ├── HomeRouter.swift
+│   │   └── HomeEntity.swift
+│   ├── Favorites/                     # Tab modülü — kalp ikonu
+│   │   ├── FavoritesScreen.swift
+│   │   ├── FavoritesPresenter.swift
+│   │   ├── FavoritesInteractor.swift
+│   │   ├── FavoritesRouter.swift
+│   │   └── FavoritesEntity.swift
+│   ├── Settings/                      # Tab modülü — gear ikonu
+│   │   ├── SettingsScreen.swift
+│   │   ├── SettingsPresenter.swift
+│   │   ├── SettingsInteractor.swift
+│   │   ├── SettingsRouter.swift
+│   │   └── SettingsEntity.swift
 │   ├── {ModuleName}/
 │   │   ├── {ModuleName}Screen.swift
 │   │   ├── {ModuleName}Presenter.swift

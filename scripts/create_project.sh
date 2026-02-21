@@ -18,7 +18,7 @@ echo "   Bundle: $BUNDLE_PREFIX.$APP_NAME"
 echo "   Target: iOS $DEPLOY_TARGET"
 
 # Create folder structure
-mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules/{Splash,Onboarding},Core/Onboarding/Service,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
+mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules/{Splash,Onboarding,Home,Favorites,Settings},Core/Onboarding/Service,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
 
 # Function to replace placeholders
 replace_placeholders() {
@@ -51,6 +51,27 @@ replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingPresenter.swift
 replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingInteractor.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingInteractor.swift"
 replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingRouter.swift"
 replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingEntity.swift"
+
+# Generate Home module files
+replace_placeholders "$TEMPLATE_DIR/Modules/Home/HomeScreen.swift" > "$APP_NAME/$APP_NAME/Modules/Home/HomeScreen.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Home/HomePresenter.swift" > "$APP_NAME/$APP_NAME/Modules/Home/HomePresenter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Home/HomeInteractor.swift" > "$APP_NAME/$APP_NAME/Modules/Home/HomeInteractor.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Home/HomeRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Home/HomeRouter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Home/HomeEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Home/HomeEntity.swift"
+
+# Generate Favorites module files
+replace_placeholders "$TEMPLATE_DIR/Modules/Favorites/FavoritesScreen.swift" > "$APP_NAME/$APP_NAME/Modules/Favorites/FavoritesScreen.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Favorites/FavoritesPresenter.swift" > "$APP_NAME/$APP_NAME/Modules/Favorites/FavoritesPresenter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Favorites/FavoritesInteractor.swift" > "$APP_NAME/$APP_NAME/Modules/Favorites/FavoritesInteractor.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Favorites/FavoritesRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Favorites/FavoritesRouter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Favorites/FavoritesEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Favorites/FavoritesEntity.swift"
+
+# Generate Settings module files
+replace_placeholders "$TEMPLATE_DIR/Modules/Settings/SettingsScreen.swift" > "$APP_NAME/$APP_NAME/Modules/Settings/SettingsScreen.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Settings/SettingsPresenter.swift" > "$APP_NAME/$APP_NAME/Modules/Settings/SettingsPresenter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Settings/SettingsInteractor.swift" > "$APP_NAME/$APP_NAME/Modules/Settings/SettingsInteractor.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Settings/SettingsRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Settings/SettingsRouter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Settings/SettingsEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Settings/SettingsEntity.swift"
 
 # Generate Onboarding service files
 replace_placeholders "$TEMPLATE_DIR/Core/Onboarding/Service/OnboardingServiceProtocol.swift" > "$APP_NAME/$APP_NAME/Core/Onboarding/Service/OnboardingServiceProtocol.swift"

@@ -30,6 +30,7 @@ class OnboardingPresenter {
 
     func onCompletePressed() {
         interactor.completeOnboarding()
+        router.showHomeScreen()
     }
 }
 

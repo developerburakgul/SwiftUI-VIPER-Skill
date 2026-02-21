@@ -7,7 +7,7 @@ import SwiftfulRouting
 
 @MainActor
 protocol OnboardingRouter {
-    // Onboarding'den çıkış CoreBuilder seviyesinde yönetilir
+    func showHomeScreen()
 }
 
 extension CoreRouter: OnboardingRouter { }

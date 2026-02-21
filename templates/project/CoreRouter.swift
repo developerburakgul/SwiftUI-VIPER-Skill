@@ -18,11 +18,10 @@ struct CoreRouter {
         }
     }
 
-    func showHomeScreen() {
-        // TODO: Home modülünü oluşturduktan sonra buraya ekleyin
-        // router.showScreen(.push) { router in
-        //     builder.homeScreen(router: router)
-        // }
+    func showHomeScreen(entity: HomeEntity = HomeEntity()) {
+        router.showScreen(.push) { router in
+            builder.homeScreen(router: router, entity: entity)
+        }
     }
 
     // Example:
