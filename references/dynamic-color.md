@@ -2,6 +2,36 @@
 
 > BurakKit paketinin `DynamicColor` modülü — `import DynamicColor`
 
+## Genel Mekanizma
+
+Tema değişiklikleri UIKit'in `overrideUserInterfaceStyle` API'si ile tüm window'lara global olarak uygulanır. Bu sayede `static var` olarak tanımlanan renkler dahil tüm `@DynamicColor` property'leri anında güncellenir — ekstra binding veya environment değişkeni gerekmez.
+
+## AppTheme
+
+`public enum AppTheme: String, CaseIterable, Identifiable, Hashable, Sendable` — Kullanılabilir tema seçenekleri.
+
+```swift
+public enum AppTheme: String, CaseIterable, Identifiable, Hashable, Sendable {
+    case system
+    case light
+    case dark
+
+    public var id: String { rawValue }
+
+    public var title: String {
+        switch self {
+        case .system: return "System"
+        case .light: return "Light"
+        case .dark: return "Dark"
+        }
+    }
+}
+```
+
+- `id` → `rawValue` döner (`Identifiable` conformance)
+- `title` → İngilizce label döner: `"System"`, `"Light"`, `"Dark"`
+- `CaseIterable` sayesinde `AppTheme.allCases` ile tüm case'ler iterate edilebilir
+
 ## ThemeStore
 
 `@MainActor public final class ThemeStore: ObservableObject, Sendable` — Tema yönetimi singleton'ı. UserDefaults'a otomatik persist eder.
@@ -13,6 +43,13 @@ ThemeStore.shared.theme = .light
 ThemeStore.shared.theme = .dark
 ```
 
+### Detaylar
+
+- `init` **internal** erişim seviyesinde — dışarıdan yalnızca `ThemeStore.shared` kullanılabilir
+- Tema değiştiğinde `didSet` tetiklenir → UserDefaults'a kaydeder + `applyInterfaceStyle()` çağırır
+- `applyInterfaceStyle()` tüm `connectedScenes` window'larını iterate edip `overrideUserInterfaceStyle` set eder
+- UserDefaults key: `"app_theme"` (hardcoded, override edilemez)
+
 ### Ayarlar ekranı örneği
 
 ```swift
@@ -20,10 +57,10 @@ struct SettingsScreen: View {
     @ObservedObject private var themeStore = ThemeStore.shared
 
     var body: some View {
-        Picker("Tema", selection: $themeStore.theme) {
-            Text("Sistem").tag(AppTheme.system)
-            Text("Açık").tag(AppTheme.light)
-            Text("Koyu").tag(AppTheme.dark)
+        Picker("Theme", selection: $themeStore.theme) {
+            ForEach(AppTheme.allCases) { theme in
+                Text(theme.title).tag(theme)
+            }
         }
         .pickerStyle(.segmented)
     }
@@ -32,7 +69,13 @@ struct SettingsScreen: View {
 
 ## @DynamicColor Property Wrapper
 
-Tema değişikliklerine otomatik tepki veren renk tanımları. 6 farklı init varyantı:
+`@MainActor @propertyWrapper public struct DynamicColor: DynamicProperty` — Tema değişikliklerine otomatik tepki veren renk tanımları.
+
+- `@MainActor` annotation'ı taşır — kullanan tiplerde main actor bağımlılığı oluşur
+- `DynamicProperty` conformance'ı sayesinde SwiftUI view'ları otomatik re-render olur
+- Hem instance hem `static` property olarak kullanılabilir
+
+6 farklı init varyantı:
 
 ```swift
 // 1. SwiftUI Color çifti — light ve dark ayrı
@@ -67,6 +110,8 @@ var highlight: Color
 ```swift
 let custom = Color(hex: "#34C759")
 ```
+
+> **Uyarı:** `Color(hex:)` dahili olarak `UIColor(hex:)` üzerinden çalışır. Geçersiz hex string (yanlış uzunluk, hex olmayan karakter) verildiğinde `precondition` ile **runtime crash** oluşur. `Palette` enum'undaki static sabitler güvenlidir, ancak runtime'da dinamik oluşturulan hex string'lerde dikkatli olunmalıdır.
 
 ## Design Pattern — `{AppName}Design.swift`
 
