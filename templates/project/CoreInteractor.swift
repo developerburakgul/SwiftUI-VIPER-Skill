@@ -30,6 +30,8 @@ struct CoreInteractor {
     // MARK: - Splash
 
     func performStartupTasks() async {
+        // Splash ekranının minimum görünme süresi
+        try? await Task.sleep(for: .seconds(2))
         // TODO: Uygulama açılışında yapılacak işlemleri buraya ekleyin
         // Örnek: API config fetch, remote config, authentication check vb.
     }

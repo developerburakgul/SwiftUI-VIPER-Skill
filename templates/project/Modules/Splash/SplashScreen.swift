@@ -18,17 +18,39 @@ struct SplashScreen: View {
     }
 
     private var contentView: some View {
-        VStack {
-            Spacer()
+        ZStack {
+            // Gradient arka plan
+            LinearGradient(
+                colors: [
+                    Color(red: 0.1, green: 0.1, blue: 0.3),
+                    Color(red: 0.2, green: 0.1, blue: 0.5),
+                    Color(red: 0.4, green: 0.15, blue: 0.6)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
 
-            // TODO: App icon veya logo ekleyin
-            Image(systemName: "app.fill")
-                .font(.system(size: 80))
-                .foregroundStyle(.blue)
+            VStack(spacing: 16) {
+                Spacer()
 
-            Spacer()
+                // TODO: App icon veya logo ekleyin
+                Image(systemName: "app.fill")
+                    .font(.system(size: 72))
+                    .foregroundStyle(.white.opacity(0.9))
+                    .shadow(color: .white.opacity(0.3), radius: 20)
+
+                Text("__AppName__")
+                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+
+                Spacer()
+
+                ProgressView()
+                    .tint(.white.opacity(0.7))
+                    .padding(.bottom, 48)
+            }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
