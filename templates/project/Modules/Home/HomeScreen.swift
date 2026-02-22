@@ -35,5 +35,7 @@ struct HomeScreen: View {
     let container = DevPreview.shared.container
     let builder = CoreBuilder(interactor: CoreInteractor(container: container))
 
-    builder.homeScreen(router: Router(paths: .constant(.init())))
+    RouterView { router in
+    builder.homeScreen(router: router) 
+    }
 }
