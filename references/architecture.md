@@ -62,6 +62,12 @@ This is NOT classic VIPER. Key differences:
 │   │   ├── TabbarInteractor.swift
 │   │   ├── TabbarRouter.swift
 │   │   └── TabbarEntity.swift
+│   ├── Home/                           # Tab modülü — ev ikonu
+│   │   ├── HomeScreen.swift
+│   │   ├── HomePresenter.swift
+│   │   ├── HomeInteractor.swift
+│   │   ├── HomeRouter.swift
+│   │   └── HomeEntity.swift
 │   ├── Favorites/                     # Tab modülü — kalp ikonu
 │   │   ├── FavoritesScreen.swift
 │   │   ├── FavoritesPresenter.swift

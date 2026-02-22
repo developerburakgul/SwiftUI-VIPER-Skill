@@ -49,6 +49,16 @@ struct CoreBuilder {
         )
     }
 
+    func homeScreen(router: Router, entity: HomeEntity = HomeEntity()) -> some View {
+        HomeScreen(
+            presenter: HomePresenter(
+                interactor: interactor,
+                router: CoreRouter(router: router, builder: self),
+                entity: entity
+            )
+        )
+    }
+
     func favoritesScreen(router: Router, entity: FavoritesEntity = FavoritesEntity()) -> some View {
         FavoritesScreen(
             presenter: FavoritesPresenter(

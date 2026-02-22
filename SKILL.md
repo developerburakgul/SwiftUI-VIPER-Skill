@@ -84,6 +84,12 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    │   │   │   ├── TabbarInteractor.swift
    │   │   │   ├── TabbarRouter.swift
    │   │   │   └── TabbarEntity.swift
+   │   │   ├── Home/                             ← templates/project/Modules/Home/* (tab modülü)
+   │   │   │   ├── HomeScreen.swift
+   │   │   │   ├── HomePresenter.swift
+   │   │   │   ├── HomeInteractor.swift
+   │   │   │   ├── HomeRouter.swift
+   │   │   │   └── HomeEntity.swift
    │   │   ├── Favorites/                     ← templates/project/Modules/Favorites/* (tab modülü)
    │   │   │   ├── FavoritesScreen.swift
    │   │   │   ├── FavoritesPresenter.swift

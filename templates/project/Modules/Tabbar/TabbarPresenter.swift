@@ -7,7 +7,7 @@ import SwiftUI
 import SwiftfulRouting
 
 enum TabbarTab: Int, CaseIterable {
-    case favorites, settings
+    case home, favorites, settings
 }
 
 @Observable
@@ -21,7 +21,7 @@ class TabbarPresenter {
     private let builder: CoreBuilder
 
     // MARK: - Published Properties
-    var selectedTab: TabbarTab = .favorites
+    var selectedTab: TabbarTab = .home
 
     // MARK: - Init
     init(
@@ -37,6 +37,10 @@ class TabbarPresenter {
     }
 
     // MARK: - Tab Builders
+
+    func buildHomeScreen(router: Router) -> some View {
+        builder.homeScreen(router: router)
+    }
 
     func buildFavoritesScreen(router: Router) -> some View {
         builder.favoritesScreen(router: router)

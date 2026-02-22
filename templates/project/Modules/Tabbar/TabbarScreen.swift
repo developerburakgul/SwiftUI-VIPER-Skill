@@ -12,6 +12,14 @@ struct TabbarScreen: View {
 
     var body: some View {
         TabView(selection: $presenter.selectedTab) {
+            Tab(value: TabbarTab.home) {
+                RouterView { router in
+                    presenter.buildHomeScreen(router: router)
+                }
+            } label: {
+                Label("Home", systemImage: "house.fill")
+            }
+
             Tab(value: TabbarTab.favorites) {
                 RouterView { router in
                     presenter.buildFavoritesScreen(router: router)
