@@ -13,9 +13,9 @@ struct Dependencies {
     init(config: BuildConfiguration) {
         let container = DependencyContainer()
 
-        // Onboarding — UserDefaults tüm config'lerde aynı şekilde çalışır
-        let onboardingManager = OnboardingManager(service: OnboardingService())
-        container.register(OnboardingManager.self, service: onboardingManager)
+        // User — UserDefaults tüm config'lerde aynı şekilde çalışır
+        let userManager = UserManager(service: UserService())
+        container.register(UserManager.self, service: userManager)
 
         switch config {
         case .mock:
@@ -47,17 +47,17 @@ extension View {
 class DevPreview {
     static let shared = DevPreview()
 
-    let onboardingManager: OnboardingManager
+    let userManager: UserManager
 
     var container: DependencyContainer {
         let container = DependencyContainer()
-        container.register(OnboardingManager.self, service: onboardingManager)
+        container.register(UserManager.self, service: userManager)
         // TODO: Register mock managers
         return container
     }
 
     init() {
-        self.onboardingManager = OnboardingManager(service: MockOnboardingService())
+        self.userManager = UserManager(service: MockUserService())
         // TODO: Initialize mock managers
     }
 }

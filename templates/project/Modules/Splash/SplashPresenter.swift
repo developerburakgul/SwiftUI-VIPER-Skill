@@ -32,7 +32,7 @@ class SplashPresenter {
     func onAppear() async {
         await interactor.performStartupTasks()
 
-        if interactor.hasCompletedOnboarding {
+        if interactor.isOnboardingComplete {
             router.showHomeScreen()
         } else {
             router.showOnboardingScreen()

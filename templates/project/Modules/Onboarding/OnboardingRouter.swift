@@ -8,7 +8,7 @@ import SwiftfulRouting
 
 @MainActor
 protocol OnboardingRouter {
-    func showHomeScreen(entity: HomeEntity)
+    func showHomeScreen()
 }
 
 extension CoreRouter: OnboardingRouter { }

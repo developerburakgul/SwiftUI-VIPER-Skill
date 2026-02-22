@@ -7,7 +7,7 @@ import Foundation
 
 @MainActor
 protocol SplashInteractor {
-    var hasCompletedOnboarding: Bool { get }
+    var isOnboardingComplete: Bool { get }
     func performStartupTasks() async
 }
 

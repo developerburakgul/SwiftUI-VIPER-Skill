@@ -7,8 +7,8 @@ import Foundation
 
 @MainActor
 protocol OnboardingInteractor {
-    var hasCompletedOnboarding: Bool { get }
-    func completeOnboarding()
+    var isOnboardingComplete: Bool { get }
+    func markOnboardingComplete()
 }
 
 extension CoreInteractor: OnboardingInteractor { }

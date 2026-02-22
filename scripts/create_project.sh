@@ -22,7 +22,7 @@ echo "   Bundle: $BUNDLE_PREFIX.$APP_NAME"
 echo "   Target: iOS $DEPLOY_TARGET"
 
 # Create folder structure
-mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules/{Splash,Onboarding,Home,Favorites,Settings},Core/Onboarding/Service,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
+mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules/{Splash,Onboarding,Home,Favorites,Settings},Core/User/Service,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
 
 # Function to replace placeholders
 replace_placeholders() {
@@ -79,11 +79,11 @@ replace_placeholders "$TEMPLATE_DIR/Modules/Settings/SettingsInteractor.swift" >
 replace_placeholders "$TEMPLATE_DIR/Modules/Settings/SettingsRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Settings/SettingsRouter.swift"
 replace_placeholders "$TEMPLATE_DIR/Modules/Settings/SettingsEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Settings/SettingsEntity.swift"
 
-# Generate Onboarding service files
-replace_placeholders "$TEMPLATE_DIR/Core/Onboarding/Service/OnboardingServiceProtocol.swift" > "$APP_NAME/$APP_NAME/Core/Onboarding/Service/OnboardingServiceProtocol.swift"
-replace_placeholders "$TEMPLATE_DIR/Core/Onboarding/Service/OnboardingService.swift" > "$APP_NAME/$APP_NAME/Core/Onboarding/Service/OnboardingService.swift"
-replace_placeholders "$TEMPLATE_DIR/Core/Onboarding/Service/MockOnboardingService.swift" > "$APP_NAME/$APP_NAME/Core/Onboarding/Service/MockOnboardingService.swift"
-replace_placeholders "$TEMPLATE_DIR/Core/Onboarding/OnboardingManager.swift" > "$APP_NAME/$APP_NAME/Core/Onboarding/OnboardingManager.swift"
+# Generate User service files
+replace_placeholders "$TEMPLATE_DIR/Core/User/Service/UserServiceProtocol.swift" > "$APP_NAME/$APP_NAME/Core/User/Service/UserServiceProtocol.swift"
+replace_placeholders "$TEMPLATE_DIR/Core/User/Service/UserService.swift" > "$APP_NAME/$APP_NAME/Core/User/Service/UserService.swift"
+replace_placeholders "$TEMPLATE_DIR/Core/User/Service/MockUserService.swift" > "$APP_NAME/$APP_NAME/Core/User/Service/MockUserService.swift"
+replace_placeholders "$TEMPLATE_DIR/Core/User/UserManager.swift" > "$APP_NAME/$APP_NAME/Core/User/UserManager.swift"
 
 # Generate project.yml
 replace_placeholders "$TEMPLATE_DIR/project.yml" > "$APP_NAME/project.yml"

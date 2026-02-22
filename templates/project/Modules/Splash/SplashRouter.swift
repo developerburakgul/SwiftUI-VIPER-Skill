@@ -8,9 +8,8 @@ import SwiftfulRouting
 
 @MainActor
 protocol SplashRouter {
-    // MARK: - Segues
-    func showOnboardingScreen(entity: OnboardingEntity)
-    func showHomeScreen(entity: HomeEntity)
+    func showOnboardingScreen()
+    func showHomeScreen()
 }
 
 extension CoreRouter: SplashRouter { }

@@ -9,22 +9,22 @@ import DependencyContainer
 @MainActor
 struct CoreInteractor {
 
-    let onboardingManager: OnboardingManager
+    let userManager: UserManager
 
     init(container: DependencyContainer) {
-        self.onboardingManager = container.resolve(OnboardingManager.self)!
+        self.userManager = container.resolve(UserManager.self)!
         // TODO: Resolve managers as needed
         // self.authManager = container.resolve(AuthManager.self)!
     }
 
-    // MARK: - Onboarding
+    // MARK: - User
 
-    var hasCompletedOnboarding: Bool {
-        onboardingManager.hasCompleted
+    var isOnboardingComplete: Bool {
+        userManager.isOnboardingComplete
     }
 
-    func completeOnboarding() {
-        onboardingManager.completeOnboarding()
+    func markOnboardingComplete() {
+        userManager.markOnboardingComplete()
     }
 
     // MARK: - Splash

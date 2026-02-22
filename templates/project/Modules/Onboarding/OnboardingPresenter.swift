@@ -30,7 +30,7 @@ class OnboardingPresenter {
     // MARK: - Actions
 
     func onCompletePressed() {
-        interactor.completeOnboarding()
+        interactor.markOnboardingComplete()
         router.showHomeScreen()
     }
 }
