@@ -11,7 +11,7 @@ struct CoreBuilder {
     let interactor: CoreInteractor
 
     func appView() -> some View {
-        RouterView { router in
+        RouterView(addNavigationStack: false, addModuleSupport: true) { router in
             splashScreen(router: router)
         }
     }
