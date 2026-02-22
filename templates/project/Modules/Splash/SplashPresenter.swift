@@ -33,7 +33,7 @@ class SplashPresenter {
         await interactor.performStartupTasks()
 
         if interactor.isOnboardingComplete {
-            router.showHomeScreen()
+            router.showTabbarScreen()
         } else {
             router.showOnboardingScreen()
         }

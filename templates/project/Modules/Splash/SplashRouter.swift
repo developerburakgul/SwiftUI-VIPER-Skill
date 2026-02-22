@@ -9,7 +9,7 @@ import SwiftfulRouting
 @MainActor
 protocol SplashRouter {
     func showOnboardingScreen()
-    func showHomeScreen()
+    func showTabbarScreen()
 }
 
 extension CoreRouter: SplashRouter { }

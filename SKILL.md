@@ -78,12 +78,12 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    │   │   │   ├── OnboardingInteractor.swift
    │   │   │   ├── OnboardingRouter.swift
    │   │   │   └── OnboardingEntity.swift
-   │   │   ├── Home/                          ← templates/project/Modules/Home/* (TabView container)
-   │   │   │   ├── HomeScreen.swift
-   │   │   │   ├── HomePresenter.swift
-   │   │   │   ├── HomeInteractor.swift
-   │   │   │   ├── HomeRouter.swift
-   │   │   │   └── HomeEntity.swift
+   │   │   ├── Tabbar/                         ← templates/project/Modules/Tabbar/* (TabView container)
+   │   │   │   ├── TabbarScreen.swift
+   │   │   │   ├── TabbarPresenter.swift
+   │   │   │   ├── TabbarInteractor.swift
+   │   │   │   ├── TabbarRouter.swift
+   │   │   │   └── TabbarEntity.swift
    │   │   ├── Favorites/                     ← templates/project/Modules/Favorites/* (tab modülü)
    │   │   │   ├── FavoritesScreen.swift
    │   │   │   ├── FavoritesPresenter.swift

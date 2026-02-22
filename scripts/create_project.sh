@@ -22,7 +22,7 @@ echo "   Bundle: $BUNDLE_PREFIX.$APP_NAME"
 echo "   Target: iOS $DEPLOY_TARGET"
 
 # Create folder structure
-mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules/{Splash,Onboarding,Home,Favorites,Settings},Core/User/Service,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
+mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules/{Splash,Onboarding,Tabbar,Favorites,Settings},Core/User/Service,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
 
 # Function to replace placeholders
 replace_placeholders() {
@@ -58,12 +58,12 @@ replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingInteractor.swif
 replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingRouter.swift"
 replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingEntity.swift"
 
-# Generate Home module files
-replace_placeholders "$TEMPLATE_DIR/Modules/Home/HomeScreen.swift" > "$APP_NAME/$APP_NAME/Modules/Home/HomeScreen.swift"
-replace_placeholders "$TEMPLATE_DIR/Modules/Home/HomePresenter.swift" > "$APP_NAME/$APP_NAME/Modules/Home/HomePresenter.swift"
-replace_placeholders "$TEMPLATE_DIR/Modules/Home/HomeInteractor.swift" > "$APP_NAME/$APP_NAME/Modules/Home/HomeInteractor.swift"
-replace_placeholders "$TEMPLATE_DIR/Modules/Home/HomeRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Home/HomeRouter.swift"
-replace_placeholders "$TEMPLATE_DIR/Modules/Home/HomeEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Home/HomeEntity.swift"
+# Generate Tabbar module files
+replace_placeholders "$TEMPLATE_DIR/Modules/Tabbar/TabbarScreen.swift" > "$APP_NAME/$APP_NAME/Modules/Tabbar/TabbarScreen.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Tabbar/TabbarPresenter.swift" > "$APP_NAME/$APP_NAME/Modules/Tabbar/TabbarPresenter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Tabbar/TabbarInteractor.swift" > "$APP_NAME/$APP_NAME/Modules/Tabbar/TabbarInteractor.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Tabbar/TabbarRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Tabbar/TabbarRouter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Tabbar/TabbarEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Tabbar/TabbarEntity.swift"
 
 # Generate Favorites module files
 replace_placeholders "$TEMPLATE_DIR/Modules/Favorites/FavoritesScreen.swift" > "$APP_NAME/$APP_NAME/Modules/Favorites/FavoritesScreen.swift"

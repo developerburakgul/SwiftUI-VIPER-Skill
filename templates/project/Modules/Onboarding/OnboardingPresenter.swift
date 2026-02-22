@@ -31,7 +31,7 @@ class OnboardingPresenter {
 
     func onCompletePressed() {
         interactor.markOnboardingComplete()
-        router.showHomeScreen()
+        router.showTabbarScreen()
     }
 }
 

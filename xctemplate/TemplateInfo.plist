@@ -40,7 +40,7 @@
       <key>Name</key>
       <string>Module Name</string>
       <key>Description</key>
-      <string>The VIPER module name (e.g. Splash, Home, Settings)</string>
+      <string>The VIPER module name (e.g. Splash, Tabbar, Settings)</string>
       <key>Type</key>
       <string>text</string>
       <key>Required</key>

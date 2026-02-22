@@ -38,9 +38,9 @@ struct CoreBuilder {
         )
     }
 
-    func homeScreen(router: Router, entity: HomeEntity = HomeEntity()) -> some View {
-        HomeScreen(
-            presenter: HomePresenter(
+    func tabbarScreen(router: Router, entity: TabbarEntity = TabbarEntity()) -> some View {
+        TabbarScreen(
+            presenter: TabbarPresenter(
                 interactor: interactor,
                 router: CoreRouter(router: router, builder: self),
                 entity: entity,

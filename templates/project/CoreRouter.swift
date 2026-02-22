@@ -21,10 +21,10 @@ struct CoreRouter {
         }
     }
 
-    func showHomeScreen(entity: HomeEntity = HomeEntity()) {
-        router.showModule(.trailing, id: "home") { _ in
+    func showTabbarScreen(entity: TabbarEntity = TabbarEntity()) {
+        router.showModule(.trailing, id: "tabbar") { _ in
             RouterView(addNavigationStack: false) { router in
-                builder.homeScreen(router: router, entity: entity)
+                builder.tabbarScreen(router: router, entity: entity)
             }
         }
     }

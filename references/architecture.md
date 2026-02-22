@@ -56,12 +56,12 @@ This is NOT classic VIPER. Key differences:
 │   │   ├── OnboardingInteractor.swift
 │   │   ├── OnboardingRouter.swift
 │   │   └── OnboardingEntity.swift
-│   ├── Home/                          # TabView container — ana ekran
-│   │   ├── HomeScreen.swift
-│   │   ├── HomePresenter.swift
-│   │   ├── HomeInteractor.swift
-│   │   ├── HomeRouter.swift
-│   │   └── HomeEntity.swift
+│   ├── Tabbar/                         # TabView container — ana ekran
+│   │   ├── TabbarScreen.swift
+│   │   ├── TabbarPresenter.swift
+│   │   ├── TabbarInteractor.swift
+│   │   ├── TabbarRouter.swift
+│   │   └── TabbarEntity.swift
 │   ├── Favorites/                     # Tab modülü — kalp ikonu
 │   │   ├── FavoritesScreen.swift
 │   │   ├── FavoritesPresenter.swift

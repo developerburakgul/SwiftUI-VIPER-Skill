@@ -40,7 +40,7 @@
       <key>Name</key>
       <string>Scope Name</string>
       <key>Description</key>
-      <string>The parent screen name (e.g. Splash, Home)</string>
+      <string>The parent screen name (e.g. Splash, Tabbar)</string>
       <key>Type</key>
       <string>text</string>
       <key>Required</key>

@@ -1,33 +1,33 @@
 //
-//  HomePresenter.swift
+//  TabbarPresenter.swift
 //  Created by __Username__ on __Date__
 //
 
 import SwiftUI
 import SwiftfulRouting
 
-enum HomeTab: Int, CaseIterable {
+enum TabbarTab: Int, CaseIterable {
     case favorites, settings
 }
 
 @Observable
 @MainActor
-class HomePresenter {
+class TabbarPresenter {
 
     // MARK: - Private Properties
-    private let interactor: HomeInteractor
-    private let router: HomeRouter
-    private let entity: HomeEntity
+    private let interactor: TabbarInteractor
+    private let router: TabbarRouter
+    private let entity: TabbarEntity
     private let builder: CoreBuilder
 
     // MARK: - Published Properties
-    var selectedTab: HomeTab = .favorites
+    var selectedTab: TabbarTab = .favorites
 
     // MARK: - Init
     init(
-        interactor: HomeInteractor,
-        router: HomeRouter,
-        entity: HomeEntity,
+        interactor: TabbarInteractor,
+        router: TabbarRouter,
+        entity: TabbarEntity,
         builder: CoreBuilder
     ) {
         self.interactor = interactor
@@ -48,6 +48,6 @@ class HomePresenter {
 }
 
 // MARK: - Computed Properties
-extension HomePresenter {
+extension TabbarPresenter {
 
 }

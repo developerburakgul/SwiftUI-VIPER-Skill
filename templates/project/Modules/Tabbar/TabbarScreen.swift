@@ -1,18 +1,18 @@
 //
-//  HomeScreen.swift
+//  TabbarScreen.swift
 //  Created by __Username__ on __Date__
 //
 
 import SwiftUI
 import SwiftfulRouting
 
-struct HomeScreen: View {
+struct TabbarScreen: View {
 
-    @State var presenter: HomePresenter
+    @State var presenter: TabbarPresenter
 
     var body: some View {
         TabView(selection: $presenter.selectedTab) {
-            Tab(value: HomeTab.favorites) {
+            Tab(value: TabbarTab.favorites) {
                 RouterView { router in
                     presenter.buildFavoritesScreen(router: router)
                 }
@@ -20,7 +20,7 @@ struct HomeScreen: View {
                 Label("Favorites", systemImage: "heart.fill")
             }
 
-            Tab(value: HomeTab.settings) {
+            Tab(value: TabbarTab.settings) {
                 RouterView { router in
                     presenter.buildSettingsScreen(router: router)
                 }
@@ -36,6 +36,6 @@ struct HomeScreen: View {
     let builder = CoreBuilder(interactor: CoreInteractor(container: container))
 
     RouterView { router in
-    builder.homeScreen(router: router) 
+    builder.tabbarScreen(router: router)
     }
 }
