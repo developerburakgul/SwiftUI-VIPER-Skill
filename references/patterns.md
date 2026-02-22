@@ -199,7 +199,7 @@ Every Screen must have at least 1 `#Preview` block:
     let container = DevPreview.shared.container
     let builder = CoreBuilder(interactor: CoreInteractor(container: container))
 
-    return RouterView { router in
+    RouterView { router in
         builder.someScreen(router: router)
     }
 }

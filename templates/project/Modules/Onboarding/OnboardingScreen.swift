@@ -63,7 +63,7 @@ struct OnboardingScreen: View {
     let container = DevPreview.shared.container
     let builder = CoreBuilder(interactor: CoreInteractor(container: container))
 
-    return RouterView { router in
+    RouterView { router in
         builder.onboardingScreen(router: router)
     }
 }
