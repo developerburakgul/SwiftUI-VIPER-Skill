@@ -40,7 +40,8 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 
 **Steps:**
 1. Read `references/architecture.md` for full pattern details
-2. Read ALL files in `templates/project/` for boilerplate code
+2. Read `references/swiftful-routing.md` for navigation API and patterns
+3. Read ALL files in `templates/project/` for boilerplate code
 3. Ask user for: App name, bundle ID, deployment target, initial modules
 4. **Create all folders first** (XcodeGen needs these on disk):
    ```bash
@@ -96,12 +97,12 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    │   │       ├── SettingsRouter.swift
    │   │       └── SettingsEntity.swift
    │   ├── Core/
-   │   │   └── Onboarding/                   ← templates/project/Core/Onboarding/* (default servis)
-   │   │       ├── OnboardingManager.swift
+   │   │   └── User/                          ← templates/project/Core/User/* (default servis)
+   │   │       ├── UserManager.swift
    │   │       └── Service/
-   │   │           ├── OnboardingServiceProtocol.swift
-   │   │           ├── OnboardingService.swift
-   │   │           └── MockOnboardingService.swift
+   │   │           ├── UserServiceProtocol.swift
+   │   │           ├── UserService.swift
+   │   │           └── MockUserService.swift
    │   ├── Components/                       (empty — subviews added later)
    │   ├── Design/
    │   │   └── {AppName}Design.swift        ← generate from references/dynamic-color.md pattern
@@ -134,7 +135,7 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    - `Entity/{ModuleName}Entity.swift`
 6. Create empty `Subviews/` folder
 7. **Update CoreBuilder.swift** — Add factory method
-8. **Update CoreRouter.swift** — Add navigation method (if needed)
+8. **Update CoreRouter.swift** — Add navigation method (if needed). See `references/swiftful-routing.md` for showScreen/showModal/showAlert API details
 
 **Template files to read:** `xctemplate/___VARIABLE_moduleName:identifier___/*`
 
@@ -193,6 +194,7 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 ### 5. General code questions / Architecture guidance
 
 Read `references/architecture.md` and `references/patterns.md` for detailed rules.
+For navigation questions, read `references/swiftful-routing.md` for full SwiftfulRouting API reference (showScreen, showModal, showAlert, showTransition, showModule, dismiss patterns).
 
 ---
 
@@ -209,7 +211,7 @@ Read `references/dynamic-color.md` for `@DynamicColor`, `ThemeStore`, `Color.ini
 3. **struct CoreInteractor/CoreRouter/CoreBuilder** — Value types
 4. **Entity goes to Presenter**, not View
 5. **Protocol conformance via extension** — `extension CoreInteractor: {Module}Interactor { }`
-6. **SwiftfulRouting** — `RouterView`, `Router`, `.showScreen(.push/.sheet/.fullScreenCover)`
+6. **SwiftfulRouting** — `RouterView`, `Router`, `.showScreen(.push/.sheet/.fullScreenCover)`. See `references/swiftful-routing.md` for full API reference
 7. **BurakKit modules** — `import DependencyContainer` for DI, `import DynamicColor` for theme-aware colors
 8. **Mock-first development** — Every service has a Mock version
 9. **Screen suffix** — Views are `{Module}Screen`, not `{Module}View`

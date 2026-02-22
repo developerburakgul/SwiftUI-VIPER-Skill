@@ -30,7 +30,8 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 │   ├── architecture.md         # Full VIPER pattern details with code examples
 │   ├── naming.md               # All naming conventions (files, types, methods)
 │   ├── patterns.md             # Subview, Model, Service layer patterns
-│   └── dynamic-color.md        # BurakKit DynamicColor/theme system
+│   ├── dynamic-color.md        # BurakKit DynamicColor/theme system
+│   └── swiftful-routing.md     # SwiftfulRouting navigation API and patterns
 ├── templates/
 │   ├── project/                # New project boilerplate (App.swift, CoreRIB, Dependencies, project.yml)
 │   ├── service/                # Service domain templates (Manager, Protocol, Mock)
