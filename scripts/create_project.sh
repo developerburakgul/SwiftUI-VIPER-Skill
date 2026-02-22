@@ -94,22 +94,8 @@ cp "$TEMPLATE_DIR/.gitignore.template" "$APP_NAME/.gitignore"
 # Generate Info.plist
 cp "$TEMPLATE_DIR/Info.plist" "$APP_NAME/$APP_NAME/Info.plist"
 
-# Design placeholder
-cat > "$APP_NAME/$APP_NAME/Design/${APP_NAME}Design.swift" << EOF
-//
-//  ${APP_NAME}Design.swift
-//  Created by ${CURRENT_USER} on ${CURRENT_DATE}
-//
-
-import SwiftUI
-
-// TODO: Define app-wide colors and design tokens
-struct ${APP_NAME}Design {
-    // Example:
-    // static let primaryColor = Color.blue
-    // static let backgroundColor = Color(.systemBackground)
-}
-EOF
+# Design dosyası
+replace_placeholders "$TEMPLATE_DIR/Design/__AppName__Design.swift" > "$APP_NAME/$APP_NAME/Design/${APP_NAME}Design.swift"
 
 echo "✅ Project structure created!"
 

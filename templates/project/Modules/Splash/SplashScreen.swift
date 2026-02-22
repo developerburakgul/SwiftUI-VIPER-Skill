@@ -22,9 +22,9 @@ struct SplashScreen: View {
             // Gradient arka plan
             LinearGradient(
                 colors: [
-                    Color(red: 0.1, green: 0.1, blue: 0.3),
-                    Color(red: 0.2, green: 0.1, blue: 0.5),
-                    Color(red: 0.4, green: 0.15, blue: 0.6)
+                    __AppName__Design.Splash.gradientStart,
+                    __AppName__Design.Splash.gradientMid,
+                    __AppName__Design.Splash.gradientEnd
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing

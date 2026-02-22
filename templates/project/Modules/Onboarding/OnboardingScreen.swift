@@ -18,38 +18,43 @@ struct OnboardingScreen: View {
     }
 
     private var contentView: some View {
-        VStack(spacing: 24) {
-            Spacer()
+        ZStack {
+            __AppName__Design.Background.primary.ignoresSafeArea()
 
-            Image(systemName: "hand.wave.fill")
-                .font(.system(size: 64))
-                .foregroundStyle(.blue)
+            VStack(spacing: 24) {
+                Spacer()
 
-            Text("__AppName__'a Hoş Geldiniz")
-                .font(.title)
-                .fontWeight(.bold)
+                Image(systemName: "hand.wave.fill")
+                    .font(.system(size: 64))
+                    .foregroundStyle(__AppName__Design.Accent.primary)
 
-            Text("Başlamak için aşağıdaki butona tıklayın.")
-                .font(.body)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 32)
+                Text("__AppName__'a Hoş Geldiniz")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundStyle(__AppName__Design.Foreground.primary)
 
-            Spacer()
+                Text("Başlamak için aşağıdaki butona tıklayın.")
+                    .font(.body)
+                    .foregroundStyle(__AppName__Design.Foreground.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 32)
 
-            Button {
-                presenter.onCompletePressed()
-            } label: {
-                Text("Başla")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(.blue)
-                    .foregroundStyle(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                Spacer()
+
+                Button {
+                    presenter.onCompletePressed()
+                } label: {
+                    Text("Başla")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(__AppName__Design.Accent.primary)
+                        .foregroundStyle(__AppName__Design.Background.primary)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+                .padding(.horizontal, 24)
+                .padding(.bottom, 32)
             }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 32)
         }
     }
 }

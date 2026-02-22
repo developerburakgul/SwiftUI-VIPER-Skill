@@ -15,7 +15,12 @@ struct FavoritesScreen: View {
     }
 
     private var contentView: some View {
-        Text("Favorites")
+        ZStack {
+            __AppName__Design.Background.primary.ignoresSafeArea()
+
+            Text("Favorites")
+                .foregroundStyle(__AppName__Design.Foreground.primary)
+        }
     }
 }
 
