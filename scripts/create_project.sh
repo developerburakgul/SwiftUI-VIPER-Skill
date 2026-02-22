@@ -13,6 +13,10 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SKILL_DIR="$(dirname "$SCRIPT_DIR")"
 TEMPLATE_DIR="$SKILL_DIR/templates/project"
 
+# Kullanıcı adı ve tarih bilgisi
+CURRENT_USER="$(id -F 2>/dev/null || whoami)"
+CURRENT_DATE="$(date '+%-m/%-d/%y')"
+
 echo "🚀 Creating project: $APP_NAME"
 echo "   Bundle: $BUNDLE_PREFIX.$APP_NAME"
 echo "   Target: iOS $DEPLOY_TARGET"
@@ -27,6 +31,8 @@ replace_placeholders() {
         -e "s/__BundleIdPrefix__/$BUNDLE_PREFIX/g" \
         -e "s/__DeploymentTarget__/$DEPLOY_TARGET/g" \
         -e "s/__GitHubUser__/$GITHUB_USER/g" \
+        -e "s/__Username__/$CURRENT_USER/g" \
+        -e "s/__Date__/$CURRENT_DATE/g" \
         "$1"
 }
 
@@ -86,41 +92,13 @@ replace_placeholders "$TEMPLATE_DIR/project.yml" > "$APP_NAME/project.yml"
 cp "$TEMPLATE_DIR/.gitignore.template" "$APP_NAME/.gitignore"
 
 # Generate Info.plist
-cat > "$APP_NAME/$APP_NAME/Info.plist" << 'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>$(DEVELOPMENT_LANGUAGE)</string>
-    <key>CFBundleExecutable</key>
-    <string>$(EXECUTABLE_NAME)</string>
-    <key>CFBundleIdentifier</key>
-    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-    <key>CFBundleInfoDictionaryVersion</key>
-    <string>6.0</string>
-    <key>CFBundleName</key>
-    <string>$(PRODUCT_NAME)</string>
-    <key>CFBundlePackageType</key>
-    <string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
-    <key>CFBundleShortVersionString</key>
-    <string>$(MARKETING_VERSION)</string>
-    <key>CFBundleVersion</key>
-    <string>$(CURRENT_PROJECT_VERSION)</string>
-    <key>UILaunchScreen</key>
-    <dict/>
-    <key>UISupportedInterfaceOrientations</key>
-    <array>
-        <string>UIInterfaceOrientationPortrait</string>
-    </array>
-</dict>
-</plist>
-EOF
+cp "$TEMPLATE_DIR/Info.plist" "$APP_NAME/$APP_NAME/Info.plist"
 
 # Design placeholder
 cat > "$APP_NAME/$APP_NAME/Design/${APP_NAME}Design.swift" << EOF
 //
 //  ${APP_NAME}Design.swift
+//  Created by ${CURRENT_USER} on ${CURRENT_DATE}
 //
 
 import SwiftUI

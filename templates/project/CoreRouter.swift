@@ -1,10 +1,11 @@
 //
 //  CoreRouter.swift
+//  Created by __Username__ on __Date__
 //
 
 import SwiftUI
 import SwiftfulRouting
-
+typealias Router = SwiftfulRouting.AnyRouter
 @MainActor
 struct CoreRouter {
     let router: Router
@@ -44,11 +45,11 @@ struct CoreRouter {
     // MARK: - Alerts
 
     func showAlert(error: Error) {
-        router.showAlert(.alert, title: "Error", subtitle: error.localizedDescription, buttons: nil)
+        router.showAlert(.alert, title: "Error", subtitle: error.localizedDescription)
     }
 
     func showSimpleAlert(title: String, subtitle: String?) {
-        router.showAlert(.alert, title: title, subtitle: subtitle, buttons: nil)
+        router.showAlert(.alert, title: title, subtitle: subtitle)
     }
 
     func dismissAlert() {

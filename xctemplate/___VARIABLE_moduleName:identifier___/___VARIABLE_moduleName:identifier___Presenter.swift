@@ -7,7 +7,7 @@ import SwiftUI
 
 @Observable
 @MainActor
-class ___VARIABLE_moduleName:identifier___Presenter {
+public final class ___VARIABLE_moduleName:identifier___Presenter {
 
     // MARK: - Private Properties
     private let interactor: ___VARIABLE_moduleName:identifier___Interactor

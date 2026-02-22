@@ -31,7 +31,7 @@ struct ___VARIABLE_moduleName:identifier___Screen: View {
     let container = DevPreview.shared.container
     let builder = CoreBuilder(interactor: CoreInteractor(container: container))
 
-    return RouterView { router in
+    RouterView { router in
         builder.___VARIABLE_moduleName:identifier___Screen(router: router)
     }
 }
