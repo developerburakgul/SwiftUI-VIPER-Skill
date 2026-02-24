@@ -3,7 +3,7 @@
 ## 1. Kod Üretmeden Önce Template'leri Oku
 - **HER ZAMAN** ilgili template dosyalarını oku, sonra kod üret
 - Subview → `templates/subview/scoped/` veya `templates/subview/common/`
-- Modül → `xctemplate/` veya mevcut modülleri referans al
+- Modül → `templates/module/` veya mevcut modülleri referans al
 - Servis → `templates/service/`
 - Kafadan yazmak hatalara yol açıyor: yanlış access modifier (`let` vs `var`), eksik protocol conformance (`Equatable`), eksik pattern (`static func ==`)
 - SKILL.md bunu açıkça söylüyor: "Read the relevant templates and references for the workflow"

@@ -22,9 +22,9 @@ echo "   Bundle: $BUNDLE_PREFIX.$APP_NAME"
 echo "   Target: iOS $DEPLOY_TARGET"
 
 # Create folder structure
-mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules/{Splash,Onboarding,Tabbar,Home,Favorites,Settings},Core/User/Service,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
-mkdir -p "$APP_NAME/$APP_NAME"/Modules/{Splash,Onboarding,Tabbar,Home,Favorites,Settings}/Subviews
-for MODULE in Splash Onboarding Tabbar Home Favorites Settings; do
+mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules/{Splash,Intro,UserSetup,Tabbar,Home,Favorites,Settings},Core/User/Service,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
+mkdir -p "$APP_NAME/$APP_NAME"/Modules/{Splash,Intro,UserSetup,Tabbar,Home,Favorites,Settings}/Subviews
+for MODULE in Splash Intro UserSetup Tabbar Home Favorites Settings; do
     touch "$APP_NAME/$APP_NAME/Modules/$MODULE/Subviews/.gitkeep"
 done
 
@@ -55,12 +55,35 @@ replace_placeholders "$TEMPLATE_DIR/Modules/Splash/SplashInteractor.swift" > "$A
 replace_placeholders "$TEMPLATE_DIR/Modules/Splash/SplashRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Splash/SplashRouter.swift"
 replace_placeholders "$TEMPLATE_DIR/Modules/Splash/SplashEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Splash/SplashEntity.swift"
 
-# Generate Onboarding module files
-replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingScreen.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingScreen.swift"
-replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingPresenter.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingPresenter.swift"
-replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingInteractor.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingInteractor.swift"
-replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingRouter.swift"
-replace_placeholders "$TEMPLATE_DIR/Modules/Onboarding/OnboardingEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Onboarding/OnboardingEntity.swift"
+# Generate Intro module files
+replace_placeholders "$TEMPLATE_DIR/Modules/Intro/IntroScreen.swift" > "$APP_NAME/$APP_NAME/Modules/Intro/IntroScreen.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Intro/IntroPresenter.swift" > "$APP_NAME/$APP_NAME/Modules/Intro/IntroPresenter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Intro/IntroInteractor.swift" > "$APP_NAME/$APP_NAME/Modules/Intro/IntroInteractor.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Intro/IntroRouter.swift" > "$APP_NAME/$APP_NAME/Modules/Intro/IntroRouter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Intro/IntroEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Intro/IntroEntity.swift"
+
+# Generate Intro subviews
+mkdir -p "$APP_NAME/$APP_NAME/Modules/Intro/Subviews/IntroPage"
+replace_placeholders "$TEMPLATE_DIR/Modules/Intro/Subviews/IntroPage/IntroPage.swift" > "$APP_NAME/$APP_NAME/Modules/Intro/Subviews/IntroPage/IntroPage.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Intro/Subviews/IntroPage/IntroPageEntity.swift" > "$APP_NAME/$APP_NAME/Modules/Intro/Subviews/IntroPage/IntroPageEntity.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Intro/Subviews/IntroPage/IntroPageBinding.swift" > "$APP_NAME/$APP_NAME/Modules/Intro/Subviews/IntroPage/IntroPageBinding.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/Intro/Subviews/IntroPage/IntroPageConfig.swift" > "$APP_NAME/$APP_NAME/Modules/Intro/Subviews/IntroPage/IntroPageConfig.swift"
+
+# Generate UserSetup module files
+replace_placeholders "$TEMPLATE_DIR/Modules/UserSetup/UserSetupScreen.swift" > "$APP_NAME/$APP_NAME/Modules/UserSetup/UserSetupScreen.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/UserSetup/UserSetupPresenter.swift" > "$APP_NAME/$APP_NAME/Modules/UserSetup/UserSetupPresenter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/UserSetup/UserSetupInteractor.swift" > "$APP_NAME/$APP_NAME/Modules/UserSetup/UserSetupInteractor.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/UserSetup/UserSetupRouter.swift" > "$APP_NAME/$APP_NAME/Modules/UserSetup/UserSetupRouter.swift"
+replace_placeholders "$TEMPLATE_DIR/Modules/UserSetup/UserSetupEntity.swift" > "$APP_NAME/$APP_NAME/Modules/UserSetup/UserSetupEntity.swift"
+
+# Generate UserSetup subviews
+for STEP in StepOne StepTwo StepThree; do
+    mkdir -p "$APP_NAME/$APP_NAME/Modules/UserSetup/Subviews/$STEP"
+    replace_placeholders "$TEMPLATE_DIR/Modules/UserSetup/Subviews/$STEP/${STEP}.swift" > "$APP_NAME/$APP_NAME/Modules/UserSetup/Subviews/$STEP/${STEP}.swift"
+    replace_placeholders "$TEMPLATE_DIR/Modules/UserSetup/Subviews/$STEP/${STEP}Entity.swift" > "$APP_NAME/$APP_NAME/Modules/UserSetup/Subviews/$STEP/${STEP}Entity.swift"
+    replace_placeholders "$TEMPLATE_DIR/Modules/UserSetup/Subviews/$STEP/${STEP}Binding.swift" > "$APP_NAME/$APP_NAME/Modules/UserSetup/Subviews/$STEP/${STEP}Binding.swift"
+    replace_placeholders "$TEMPLATE_DIR/Modules/UserSetup/Subviews/$STEP/${STEP}Config.swift" > "$APP_NAME/$APP_NAME/Modules/UserSetup/Subviews/$STEP/${STEP}Config.swift"
+done
 
 # Generate Tabbar module files
 replace_placeholders "$TEMPLATE_DIR/Modules/Tabbar/TabbarScreen.swift" > "$APP_NAME/$APP_NAME/Modules/Tabbar/TabbarScreen.swift"

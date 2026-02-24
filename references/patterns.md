@@ -11,10 +11,9 @@ Written as `extension` of the parent Screen. Entity, Binding, Config are namespa
 ```
 Modules/{ModuleName}/Subviews/{SubviewName}/
 ├── {SubviewName}.swift              # View + Action enum (extension of Screen)
-└── Entity/
-    ├── {SubviewName}Entity.swift    # Entity = Binding + Config
-    ├── {SubviewName}Binding.swift   # Two-way state (Equatable)
-    └── {SubviewName}Config.swift    # One-way config (Equatable)
+├── {SubviewName}Entity.swift        # Entity = Binding + Config
+├── {SubviewName}Binding.swift       # Two-way state (Equatable)
+└── {SubviewName}Config.swift        # One-way config (Equatable)
 ```
 
 **3 Components:**
@@ -140,8 +139,8 @@ Core/{Domain}/
 │   └── {Domain}Model.swift
 └── Service/
     ├── {Domain}ServiceProtocol.swift   # Protocol (Sendable)
-    ├── Mock{Domain}Service.swift       # Mock implementation
-    └── {X}{Domain}Service.swift        # Production (e.g., FirebaseAuthService)
+    └── Mock{Domain}Service.swift       # Mock implementation
+    # Production service (e.g., FirebaseAuthService) — create manually when needed
 ```
 
 ### Manager Pattern

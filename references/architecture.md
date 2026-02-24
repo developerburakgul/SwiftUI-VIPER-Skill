@@ -50,12 +50,24 @@ This is NOT classic VIPER. Key differences:
 │   │   ├── SplashInteractor.swift
 │   │   ├── SplashRouter.swift
 │   │   └── SplashEntity.swift
-│   ├── Onboarding/                   # Default module — ilk açılışta gösterilir
-│   │   ├── OnboardingScreen.swift
-│   │   ├── OnboardingPresenter.swift
-│   │   ├── OnboardingInteractor.swift
-│   │   ├── OnboardingRouter.swift
-│   │   └── OnboardingEntity.swift
+│   ├── Intro/                        # Tanıtım ekranları — ilk açılışta gösterilir
+│   │   ├── IntroScreen.swift
+│   │   ├── IntroPresenter.swift
+│   │   ├── IntroInteractor.swift
+│   │   ├── IntroRouter.swift
+│   │   ├── IntroEntity.swift
+│   │   └── Subviews/
+│   │       └── IntroPage/
+│   ├── UserSetup/                    # Kullanıcı kurulum — ilk açılışta Intro sonrası
+│   │   ├── UserSetupScreen.swift
+│   │   ├── UserSetupPresenter.swift
+│   │   ├── UserSetupInteractor.swift
+│   │   ├── UserSetupRouter.swift
+│   │   ├── UserSetupEntity.swift
+│   │   └── Subviews/
+│   │       ├── StepOne/
+│   │       ├── StepTwo/
+│   │       └── StepThree/
 │   ├── Tabbar/                         # TabView container — ana ekran
 │   │   ├── TabbarScreen.swift
 │   │   ├── TabbarPresenter.swift
@@ -85,31 +97,29 @@ This is NOT classic VIPER. Key differences:
 │   │   ├── {ModuleName}Presenter.swift
 │   │   ├── {ModuleName}Interactor.swift
 │   │   ├── {ModuleName}Router.swift
-│   │   ├── Entity/
-│   │   │   └── {ModuleName}Entity.swift
+│   │   ├── {ModuleName}Entity.swift
 │   │   └── Subviews/
 │   │       └── {SubviewName}/
 │   │           ├── {SubviewName}.swift
-│   │           └── Entity/
-│   │               ├── {SubviewName}Entity.swift
-│   │               ├── {SubviewName}Binding.swift
-│   │               └── {SubviewName}Config.swift
+│   │           ├── {SubviewName}Entity.swift
+│   │           ├── {SubviewName}Binding.swift
+│   │           └── {SubviewName}Config.swift
 │   └── ...
 ├── Core/                             # Service domains
-│   ├── Onboarding/                   # Default service — UserDefaults persistence
-│   │   ├── OnboardingManager.swift
+│   ├── User/                         # Default service — kullanıcı yönetimi
+│   │   ├── UserManager.swift
 │   │   └── Service/
-│   │       ├── OnboardingServiceProtocol.swift
-│   │       ├── OnboardingService.swift
-│   │       └── MockOnboardingService.swift
+│   │       ├── UserServiceProtocol.swift
+│   │       ├── UserService.swift
+│   │       └── MockUserService.swift
 │   ├── {Domain}/
 │   │   ├── {Domain}Manager.swift
 │   │   ├── Models/
 │   │   │   └── {Domain}Model.swift
 │   │   └── Service/
 │   │       ├── {Domain}ServiceProtocol.swift
-│   │       ├── Mock{Domain}Service.swift
-│   │       └── {X}{Domain}Service.swift
+│   │       └── Mock{Domain}Service.swift
+│   │       # Production service (e.g., Firebase{Domain}Service) — create manually
 │   └── ...
 ├── Components/                       # Reusable UI
 │   ├── Views/

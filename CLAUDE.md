@@ -79,7 +79,22 @@ The `SKILL.md` frontmatter defines trigger keywords. When Claude detects a match
 |---------|---------|---------|
 | **BurakKit** (0.1.0) | `DependencyContainer` | DI container for resolving managers |
 | | `DynamicColor` | Theme-aware colors (`@DynamicColor`, `ThemeStore`, `Color(hex:)`) |
-| **SwiftfulRouting** (6.1.9) | — | Navigation (`RouterView`, `AnyRouter`, `.showScreen(.push/.sheet/.fullScreenCover)`) |
+| **SwiftfulRouting** (6.0.0+) | — | Navigation (`RouterView`, `AnyRouter`, `.showScreen(.push/.sheet/.fullScreenCover)`) |
+
+## DynamicColor Quick Reference
+
+- `@DynamicColor var primary: Color` — Theme-aware color property in `{AppName}Design`
+- `ThemeStore` — Observable store for current theme (persisted in UserDefaults)
+- `{AppName}Design.swift` — Single file defining all app colors using `@DynamicColor`
+- See `references/dynamic-color.md` for full pattern
+
+## Navigation Quick Reference
+
+- `showScreen(.push/.sheet/.fullScreenCover)` — Navigate to a new screen
+- `showModal(transition:)` — Present a modal with custom transition
+- `showModule(module:)` — Present a SwiftfulRouting module
+- `showAlert(.alert/.confirmationDialog)` — Show system alerts
+- `dismiss()` / `dismissModal()` / `dismissScreen()` — Dismiss navigation
 
 ## Critical Rules for Generated Code
 
@@ -95,6 +110,11 @@ The `SKILL.md` frontmatter defines trigger keywords. When Claude detects a match
 - No `NavigationStack` — all navigation is handled by SwiftfulRouting (`RouterView`, `Router`, `.showScreen`)
 - No `print()` — use `os_log`
 - No force unwrap (`!`)
+- Presenter: `@MainActor`, `@Published private(set) var` for state, computed properties in separate extension
+- Protocols: All Interactor and Router protocols must be `@MainActor`
+- Subviews: `View, @MainActor Equatable` with manual `==` implementation
+- Config = `let` (read-only), Binding = `@Binding` (two-way)
+- Flat file structure — no `Entity/` subfolder in modules or subviews
 
 ## Naming Conventions
 
@@ -105,7 +125,7 @@ The `SKILL.md` frontmatter defines trigger keywords. When Claude detects a match
 | Interactor Protocol | `{Module}Interactor` | `ExploreInteractor` |
 | Router Protocol | `{Module}Router` | `ExploreRouter` |
 | Entity | `{Module}Entity` | `ChatEntity` |
-| CoreBuilder factory | `{module}Screen(router:)` | `exploreScreen(router:)` |
+| CoreBuilder factory | `{module}Screen(router:entity:)` | `exploreScreen(router:entity:)` |
 | CoreRouter nav | `show{Module}Screen(entity:)` | `showChatScreen(entity:)` |
 | Manager | `{Domain}Manager` | `AuthManager` |
 | Service Protocol | `{Domain}ServiceProtocol` | `AuthServiceProtocol` |

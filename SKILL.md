@@ -72,12 +72,40 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    │   │   │   ├── SplashInteractor.swift
    │   │   │   ├── SplashRouter.swift
    │   │   │   └── SplashEntity.swift
-   │   │   ├── Onboarding/                   ← templates/project/Modules/Onboarding/* (default modül)
-   │   │   │   ├── OnboardingScreen.swift
-   │   │   │   ├── OnboardingPresenter.swift
-   │   │   │   ├── OnboardingInteractor.swift
-   │   │   │   ├── OnboardingRouter.swift
-   │   │   │   └── OnboardingEntity.swift
+   │   │   ├── Intro/                          ← templates/project/Modules/Intro/* (ilk açılış tanıtım)
+   │   │   │   ├── IntroScreen.swift
+   │   │   │   ├── IntroPresenter.swift
+   │   │   │   ├── IntroInteractor.swift
+   │   │   │   ├── IntroRouter.swift
+   │   │   │   ├── IntroEntity.swift
+   │   │   │   └── Subviews/
+   │   │   │       └── IntroPage/
+   │   │   │           ├── IntroPage.swift
+   │   │   │           ├── IntroPageEntity.swift
+   │   │   │           ├── IntroPageBinding.swift
+   │   │   │           └── IntroPageConfig.swift
+   │   │   ├── UserSetup/                       ← templates/project/Modules/UserSetup/* (kullanıcı kurulum)
+   │   │   │   ├── UserSetupScreen.swift
+   │   │   │   ├── UserSetupPresenter.swift
+   │   │   │   ├── UserSetupInteractor.swift
+   │   │   │   ├── UserSetupRouter.swift
+   │   │   │   ├── UserSetupEntity.swift
+   │   │   │   └── Subviews/
+   │   │   │       ├── StepOne/
+   │   │   │       │   ├── StepOne.swift
+   │   │   │       │   ├── StepOneEntity.swift
+   │   │   │       │   ├── StepOneBinding.swift
+   │   │   │       │   └── StepOneConfig.swift
+   │   │   │       ├── StepTwo/
+   │   │   │       │   ├── StepTwo.swift
+   │   │   │       │   ├── StepTwoEntity.swift
+   │   │   │       │   ├── StepTwoBinding.swift
+   │   │   │       │   └── StepTwoConfig.swift
+   │   │   │       └── StepThree/
+   │   │   │           ├── StepThree.swift
+   │   │   │           ├── StepThreeEntity.swift
+   │   │   │           ├── StepThreeBinding.swift
+   │   │   │           └── StepThreeConfig.swift
    │   │   ├── Tabbar/                         ← templates/project/Modules/Tabbar/* (TabView container)
    │   │   │   ├── TabbarScreen.swift
    │   │   │   ├── TabbarPresenter.swift
@@ -109,7 +137,13 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    │   │           ├── UserServiceProtocol.swift
    │   │           ├── UserService.swift
    │   │           └── MockUserService.swift
-   │   ├── Components/                       (empty — subviews added later)
+   │   ├── Info.plist
+   │   ├── Components/
+   │   │   ├── Views/
+   │   │   ├── ViewModifiers/
+   │   │   ├── Modals/
+   │   │   ├── Buttons/
+   │   │   └── Images/
    │   ├── Design/
    │   │   └── {AppName}Design.swift        ← generate from references/dynamic-color.md pattern
    │   ├── Extensions/                       (empty)
@@ -117,7 +151,7 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    ├── project.yml                           ← templates/project/project.yml
    └── .gitignore                            ← templates/project/.gitignore.template
    ```
-6. Replace all `__AppName__`, `__BundleIdPrefix__`, `__DeploymentTarget__`, `__GitHubUser__` placeholders
+6. Replace all `__AppName__`, `__BundleIdPrefix__`, `__DeploymentTarget__`, `__GitHubUser__`, `__Username__`, `__Date__` placeholders
 7. Generate `project.yml` from template, replacing placeholders
 8. Run: `cd {AppName} && xcodegen generate`
 9. Optionally run: `open {AppName}.xcodeproj`
@@ -133,14 +167,14 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 2. Read `references/naming.md` for naming conventions
 3. Ask user for: Module name (e.g., "Settings", "Receipt")
 4. Create folder: `Modules/{ModuleName}/`
-5. Generate 5 files from templates, replacing `__ModuleName__` placeholder:
+5. Generate 5 files from templates, replacing `__ModuleName__` and `__moduleName__` (camelCase) placeholders:
    - `{ModuleName}Screen.swift`
    - `{ModuleName}Presenter.swift`
    - `{ModuleName}Interactor.swift`
    - `{ModuleName}Router.swift`
-   - `Entity/{ModuleName}Entity.swift`
+   - `{ModuleName}Entity.swift`
 6. Create empty `Subviews/` folder
-7. **Update CoreBuilder.swift** — Add factory method
+7. **Update CoreBuilder.swift** — Add factory method: `builder.__moduleName__Screen(router:entity:)`
 8. **Update CoreRouter.swift** — Add navigation method (if needed). See `references/swiftful-routing.md` for showScreen/showModal/showAlert API details
 
 **Template files to read:** `templates/module/*`
@@ -157,9 +191,9 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 3. Create folder: `Modules/{ScopeName}/Subviews/{SubviewName}/`
 4. Generate 4 files, replacing `__ScopeName__` and `__ViewName__`:
    - `{SubviewName}.swift`
-   - `Entity/{SubviewName}Entity.swift`
-   - `Entity/{SubviewName}Binding.swift`
-   - `Entity/{SubviewName}Config.swift`
+   - `{SubviewName}Entity.swift`
+   - `{SubviewName}Binding.swift`
+   - `{SubviewName}Config.swift`
 5. **Update Presenter** — Aşağıdaki 3 eklemeyi yap:
    a. `@Published var {subviewName}Entity: {ScopeName}.{SubviewName}Entity` property ekle (Published Properties bölümüne)
    b. `init` içinde entity'yi başlat: `self.{subviewName} = .init(binding: .init(...), config: .init(...))`
@@ -197,9 +231,9 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    ├── Models/
    └── Service/
        ├── {Domain}ServiceProtocol.swift
-       ├── Mock{Domain}Service.swift
-       └── {X}{Domain}Service.swift
+       └── Mock{Domain}Service.swift
    ```
+   > Production service (e.g., `Firebase{Domain}Service.swift`) is NOT templated — create manually when needed.
 5. **Update CoreInteractor.swift** — Add manager property + methods
 6. **Update Dependencies.swift** — Register manager in container
 7. **Update DevPreview** — Add mock manager
@@ -234,6 +268,17 @@ Read `references/dynamic-color.md` for `@DynamicColor`, `ThemeStore`, `Color.ini
 9. **Screen suffix** — Views are `{Module}Screen`, not `{Module}View`
 10. **3 Build Configurations** — Mock, Dev, Prod
 11. **No NavigationStack** — All navigation is managed by SwiftfulRouting (`RouterView`, `Router`, `.showScreen`). Never use `NavigationStack` or `NavigationView`
+12. **Subview conformance** — `View, @MainActor Equatable` with manual `==` implementation
+13. **Config = `let`, Binding = `@Binding`** — Config is read-only from subview, Binding is two-way
+14. **Presenter state** — `@Published private(set) var` for all published properties; computed properties in separate extension
+15. **Protocols are `@MainActor`** — All Interactor and Router protocols must be `@MainActor`
+16. **Models** — `Identifiable, Codable, Hashable` with snake_case `CodingKeys` + `static var mock`/`mocks`
+
+## ⚠️ Script Status
+
+> **`create_module.sh` and `create_subview.sh` reference a deleted `xctemplate/` directory and will fail.**
+> Claude Code should generate files directly from `templates/module/` and `templates/subview/` instead of running these scripts.
+> `create_project.sh` and `create_service.sh` work correctly.
 
 ## SPM Dependencies
 
@@ -241,4 +286,4 @@ Read `references/dynamic-color.md` for `@DynamicColor`, `ThemeStore`, `Color.ini
 |---------|---------|---------|-------|
 | BurakKit | 0.1.0 | `DependencyContainer` | DI container for resolving managers |
 | | | `DynamicColor` | Theme-aware colors (`@DynamicColor`), `ThemeStore`, `AppTheme`, `Color.init(hex:)` |
-| SwiftfulRouting | 6.1.9 | — | Navigation (`RouterView`, `AnyRouter`, `.showScreen`) |
+| SwiftfulRouting | 6.0.0+ | — | Navigation (`RouterView`, `AnyRouter`, `.showScreen`) |
