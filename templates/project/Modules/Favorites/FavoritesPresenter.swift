@@ -5,9 +5,8 @@
 
 import SwiftUI
 
-@Observable
 @MainActor
-class FavoritesPresenter {
+class FavoritesPresenter: ObservableObject {
 
     // MARK: - Private Properties
     private let interactor: FavoritesInteractor

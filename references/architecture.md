@@ -13,9 +13,9 @@ This is NOT classic VIPER. Key differences:
 └─────────────────┬───────────────────────────────────────────┘
                   │ creates
 ┌─────────────────▼───────────────────────────────────────────┐
-│              {Module}Presenter (@Observable class)            │
+│              {Module}Presenter (ObservableObject class)       │
 │  - Receives: interactor + router + entity                    │
-│  - UI State (private(set) var via @Observable)               │
+│  - UI State (@Published private(set) var)                    │
 │  - User action handler                                       │
 │  - Fetches data through interactor protocol                  │
 │  - Navigates through router protocol                         │
@@ -193,25 +193,24 @@ struct CoreRouter {
 
 ## Presenter Rules
 
-- `@Observable` and `@MainActor`
+- `ObservableObject` and `@MainActor`
 - Receives: `interactor` (protocol), `router` (protocol), `entity` (struct)
 - `interactor` and `router` are `private let`
 - `entity` is `private let`
-- State properties are `private(set) var`
+- State properties are `@Published private(set) var`
 - Actions follow `func onXxxPressed()` or `func didXxx()` naming
 - Computed properties in separate extension
 
 ```swift
-@Observable
 @MainActor
-class SomePresenter {
+class SomePresenter: ObservableObject {
     private let interactor: SomeInteractor
     private let router: SomeRouter
     private let entity: SomeEntity
 
     // MARK: - Published Properties
-    private(set) var items: [SomeModel] = []
-    private(set) var isLoading: Bool = true
+    @Published private(set) var items: [SomeModel] = []
+    @Published private(set) var isLoading: Bool = true
 
     init(interactor: SomeInteractor, router: SomeRouter, entity: SomeEntity) {
         self.interactor = interactor
@@ -285,7 +284,7 @@ struct SomeEntity {
 
 ## Screen (View) Rules
 
-- `@State var presenter` (NOT @StateObject)
+- `@StateObject var presenter` (NOT @State)
 - View only calls presenter methods, NO business logic
 - `.task { }` for async data loading
 - `#Preview` with DevPreview.shared.container
@@ -293,7 +292,7 @@ struct SomeEntity {
 
 ```swift
 struct SomeScreen: View {
-    @State var presenter: SomePresenter
+    @StateObject var presenter: SomePresenter
 
     var body: some View {
         contentView

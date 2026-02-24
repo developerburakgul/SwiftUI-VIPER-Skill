@@ -9,7 +9,7 @@ import SwiftfulRouting
 
 struct SettingsScreen: View {
 
-    @State var presenter: SettingsPresenter
+    @StateObject var presenter: SettingsPresenter
     @ObservedObject private var themeStore = ThemeStore.shared
 
     var body: some View {

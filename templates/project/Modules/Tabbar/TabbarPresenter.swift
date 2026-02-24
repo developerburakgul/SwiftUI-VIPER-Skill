@@ -10,9 +10,8 @@ enum TabbarTab: Int, CaseIterable {
     case home, favorites, settings
 }
 
-@Observable
 @MainActor
-class TabbarPresenter {
+class TabbarPresenter: ObservableObject {
 
     // MARK: - Private Properties
     private let interactor: TabbarInteractor
@@ -21,7 +20,7 @@ class TabbarPresenter {
     private let builder: CoreBuilder
 
     // MARK: - Published Properties
-    var selectedTab: TabbarTab = .home
+    @Published var selectedTab: TabbarTab = .home
 
     // MARK: - Init
     init(

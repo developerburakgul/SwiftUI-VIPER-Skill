@@ -4,8 +4,7 @@
 
 import SwiftUI
 
-@Observable
-class __DomainName__Manager {
+class __DomainName__Manager: ObservableObject {
 
     private let service: __DomainName__ServiceProtocol
 

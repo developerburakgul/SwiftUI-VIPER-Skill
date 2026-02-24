@@ -8,7 +8,7 @@ import SwiftfulRouting
 
 struct OnboardingScreen: View {
 
-    @State var presenter: OnboardingPresenter
+    @StateObject var presenter: OnboardingPresenter
 
     var body: some View {
         contentView

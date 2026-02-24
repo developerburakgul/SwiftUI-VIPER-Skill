@@ -5,9 +5,8 @@
 
 import SwiftUI
 
-@Observable
 @MainActor
-class SplashPresenter {
+class SplashPresenter: ObservableObject {
 
     // MARK: - Private Properties
     private let interactor: SplashInteractor

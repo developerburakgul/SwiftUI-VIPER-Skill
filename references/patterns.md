@@ -135,7 +135,7 @@ Each service domain follows this structure:
 
 ```
 Core/{Domain}/
-├── {Domain}Manager.swift           # @Observable class, public API
+├── {Domain}Manager.swift           # ObservableObject class, public API
 ├── Models/
 │   └── {Domain}Model.swift
 └── Service/
@@ -147,8 +147,7 @@ Core/{Domain}/
 ### Manager Pattern
 
 ```swift
-@Observable
-class SomeManager {
+class SomeManager: ObservableObject {
     private let service: SomeServiceProtocol
 
     init(service: SomeServiceProtocol) {
@@ -215,8 +214,8 @@ Multiple previews for different states:
 
 ## Important Patterns Summary
 
-1. **@Observable, NOT @ObservableObject**
-2. **@State var presenter, NOT @StateObject**
+1. **ObservableObject, NOT @Observable**
+2. **@StateObject var presenter, NOT @State**
 3. **struct Core types** — CoreInteractor, CoreRouter, CoreBuilder are structs
 4. **Entity → Presenter** — Entity is passed to Presenter, not View
 5. **Protocol conformance via extension** — `extension CoreInteractor: {Module}Interactor { }`

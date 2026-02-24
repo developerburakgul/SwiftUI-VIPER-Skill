@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ___VARIABLE_moduleName:identifier___Screen: View {
 
-    @State var presenter: ___VARIABLE_moduleName:identifier___Presenter
+    @StateObject var presenter: ___VARIABLE_moduleName:identifier___Presenter
 
     var body: some View {
         contentView

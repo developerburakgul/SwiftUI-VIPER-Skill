@@ -8,7 +8,7 @@ import SwiftfulRouting
 
 struct HomeScreen: View {
 
-    @State var presenter: HomePresenter
+    @StateObject var presenter: HomePresenter
 
     var body: some View {
         contentView

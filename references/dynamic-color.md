@@ -216,7 +216,7 @@ enum MyAppDesign {
 
 ```swift
 struct ExploreScreen: View {
-    @State var presenter: ExplorePresenter
+    @StateObject var presenter: ExplorePresenter
 
     var body: some View {
         ZStack {

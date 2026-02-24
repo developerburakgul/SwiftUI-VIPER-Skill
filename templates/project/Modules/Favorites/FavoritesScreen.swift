@@ -8,7 +8,7 @@ import SwiftfulRouting
 
 struct FavoritesScreen: View {
 
-    @State var presenter: FavoritesPresenter
+    @StateObject var presenter: FavoritesPresenter
 
     var body: some View {
         contentView

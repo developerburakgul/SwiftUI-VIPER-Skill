@@ -1,12 +1,12 @@
 #!/bin/bash
 # Usage: ./create_project.sh <AppName> <BundleIdPrefix> <DeploymentTarget> [GitHubUser]
-# Example: ./create_project.sh Finlogue com.burak 17.0 burakdesign
+# Example: ./create_project.sh Finlogue com.burak 16.0 burakdesign
 
 set -e
 
 APP_NAME="${1:?Usage: $0 <AppName> <BundleIdPrefix> <DeploymentTarget> [GitHubUser]}"
 BUNDLE_PREFIX="${2:?Missing bundle ID prefix}"
-DEPLOY_TARGET="${3:-17.0}"
+DEPLOY_TARGET="${3:-16.0}"
 GITHUB_USER="${4:-burakdesign}"
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"

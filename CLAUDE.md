@@ -18,9 +18,9 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 - **CoreBuilder** (struct) — Single factory that creates ALL screens. Each module gets a `{module}Screen(router:entity:)` method.
 - **CoreInteractor** (struct) — Single struct resolving ALL managers from `DependencyContainer`. Modules define protocol slices; CoreInteractor conforms via `extension CoreInteractor: {Module}Interactor { }`.
 - **CoreRouter** (struct) — Single struct holding `Router` (SwiftfulRouting) + `CoreBuilder`. Modules define protocol slices; CoreRouter conforms via `extension CoreRouter: {Module}Router { }`.
-- **Presenter** (`@Observable class`, `@MainActor`) — Per-module. Receives interactor + router + entity.
+- **Presenter** (`ObservableObject class`, `@MainActor`) — Per-module. Receives interactor + router + entity.
 - **Entity** (struct) — Per-module parameters passed between modules via CoreBuilder.
-- **Screen** (SwiftUI View) — `@State var presenter`, zero business logic, suffix is `Screen` not `View`.
+- **Screen** (SwiftUI View) — `@StateObject var presenter`, zero business logic, suffix is `Screen` not `View`.
 
 ## Repository Structure
 
@@ -86,7 +86,7 @@ The `SKILL.md` frontmatter defines trigger keywords. When Claude detects a match
 
 ## Critical Rules for Generated Code
 
-- `@Observable` not `@ObservableObject`; `@State var presenter` not `@StateObject`
+- `ObservableObject` not `@Observable`; `@StateObject var presenter` not `@State`
 - CoreInteractor, CoreRouter, CoreBuilder are **structs**, not classes
 - Entity goes to Presenter, never directly to View
 - Protocol conformance always via extension: `extension CoreInteractor: {Module}Interactor { }`

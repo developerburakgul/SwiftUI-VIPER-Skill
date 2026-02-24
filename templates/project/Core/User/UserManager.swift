@@ -5,11 +5,10 @@
 
 import SwiftUI
 
-@Observable
-class UserManager {
+class UserManager: ObservableObject {
 
     private let service: UserServiceProtocol
-    private(set) var isOnboardingComplete: Bool
+    @Published private(set) var isOnboardingComplete: Bool
 
     init(service: UserServiceProtocol) {
         self.service = service

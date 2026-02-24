@@ -8,7 +8,7 @@ import SwiftfulRouting
 
 struct SplashScreen: View {
 
-    @State var presenter: SplashPresenter
+    @StateObject var presenter: SplashPresenter
 
     var body: some View {
         contentView

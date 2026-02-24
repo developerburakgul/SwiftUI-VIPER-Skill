@@ -5,9 +5,8 @@
 
 import SwiftUI
 
-@Observable
 @MainActor
-class HomePresenter {
+class HomePresenter: ObservableObject {
 
     // MARK: - Private Properties
     private let interactor: HomeInteractor

@@ -31,7 +31,7 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 - **CoreInteractor** → Single shared struct, resolves managers from DependencyContainer
 - **CoreRouter** → Single shared struct, holds Router + CoreBuilder
 - **CoreBuilder** → Single shared struct, factory methods for all screens
-- **Presenter** → Per-module @Observable class, receives interactor + router + entity
+- **Presenter** → Per-module ObservableObject class, receives interactor + router + entity
 - **Entity** → Per-module struct, parameters passed from another module via CoreBuilder
 
 ## Workflow Decision Tree
@@ -212,8 +212,8 @@ Read `references/dynamic-color.md` for `@DynamicColor`, `ThemeStore`, `Color.ini
 
 ## Key Rules (Always Apply)
 
-1. **@Observable, NOT @ObservableObject** — Use Observation framework
-2. **@State var presenter, NOT @StateObject**
+1. **ObservableObject, NOT @Observable** — Use Combine's ObservableObject for iOS 16+ support
+2. **@StateObject var presenter, NOT @State**
 3. **struct CoreInteractor/CoreRouter/CoreBuilder** — Value types
 4. **Entity goes to Presenter**, not View
 5. **Protocol conformance via extension** — `extension CoreInteractor: {Module}Interactor { }`

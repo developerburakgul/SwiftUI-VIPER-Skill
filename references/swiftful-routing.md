@@ -526,9 +526,8 @@ RouterView { router in
 }
 
 // ViewModel holds the router
-@Observable
 @MainActor
-class HomeViewModel {
+class HomeViewModel: ObservableObject {
     private let router: AnyRouter
 
     init(router: AnyRouter) {
@@ -544,7 +543,7 @@ class HomeViewModel {
 
 // View calls ViewModel methods
 struct HomeView: View {
-    @State var viewModel: HomeViewModel
+    @StateObject var viewModel: HomeViewModel
 
     var body: some View {
         Text("Settings")
@@ -586,9 +585,8 @@ extension CoreRouter: HomeRouter {
 }
 
 // Presenter holds router + interactor, View calls presenter
-@Observable
 @MainActor
-class HomePresenter {
+class HomePresenter: ObservableObject {
     private let interactor: HomeInteractor
     private let router: HomeRouter
 
@@ -605,7 +603,7 @@ class HomePresenter {
 
 // View only talks to presenter
 struct HomeView: View {
-    @State var presenter: HomePresenter
+    @StateObject var presenter: HomePresenter
 
     var body: some View {
         Text("Settings")

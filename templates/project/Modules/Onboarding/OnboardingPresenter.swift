@@ -5,9 +5,8 @@
 
 import SwiftUI
 
-@Observable
 @MainActor
-class OnboardingPresenter {
+class OnboardingPresenter: ObservableObject {
 
     // MARK: - Private Properties
     private let interactor: OnboardingInteractor

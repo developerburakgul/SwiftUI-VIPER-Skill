@@ -8,33 +8,33 @@ import SwiftfulRouting
 
 struct TabbarScreen: View {
 
-    @State var presenter: TabbarPresenter
+    @StateObject var presenter: TabbarPresenter
 
     var body: some View {
         TabView(selection: $presenter.selectedTab) {
-            Tab(value: TabbarTab.home) {
-                RouterView { router in
-                    presenter.buildHomeScreen(router: router)
-                }
-            } label: {
+            RouterView { router in
+                presenter.buildHomeScreen(router: router)
+            }
+            .tabItem {
                 Label("Home", systemImage: "house.fill")
             }
+            .tag(TabbarTab.home)
 
-            Tab(value: TabbarTab.favorites) {
-                RouterView { router in
-                    presenter.buildFavoritesScreen(router: router)
-                }
-            } label: {
+            RouterView { router in
+                presenter.buildFavoritesScreen(router: router)
+            }
+            .tabItem {
                 Label("Favorites", systemImage: "heart.fill")
             }
+            .tag(TabbarTab.favorites)
 
-            Tab(value: TabbarTab.settings) {
-                RouterView { router in
-                    presenter.buildSettingsScreen(router: router)
-                }
-            } label: {
+            RouterView { router in
+                presenter.buildSettingsScreen(router: router)
+            }
+            .tabItem {
                 Label("Settings", systemImage: "gearshape.fill")
             }
+            .tag(TabbarTab.settings)
         }
     }
 }
