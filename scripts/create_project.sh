@@ -23,6 +23,10 @@ echo "   Target: iOS $DEPLOY_TARGET"
 
 # Create folder structure
 mkdir -p "$APP_NAME/$APP_NAME"/{Root/CoreRIB,Modules/{Splash,Onboarding,Tabbar,Home,Favorites,Settings},Core/User/Service,Components/{Views,ViewModifiers,Modals,Buttons,Images},Design,Extensions,Utilities}
+mkdir -p "$APP_NAME/$APP_NAME"/Modules/{Splash,Onboarding,Tabbar,Home,Favorites,Settings}/Subviews
+for MODULE in Splash Onboarding Tabbar Home Favorites Settings; do
+    touch "$APP_NAME/$APP_NAME/Modules/$MODULE/Subviews/.gitkeep"
+done
 
 # Function to replace placeholders
 replace_placeholders() {
