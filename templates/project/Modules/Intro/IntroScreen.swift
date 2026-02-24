@@ -15,33 +15,32 @@ struct IntroScreen: View {
     }
 
     private var contentView: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             __AppName__Design.Background.primary.ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                TabView(selection: $presenter.currentPage) {
-                    ForEach(Array(presenter.pages.enumerated()), id: \.offset) { index, page in
-                        IntroPage(config: page.config)
-                            .tag(index)
-                    }
+            TabView(selection: $presenter.currentPage) {
+                ForEach(presenter.pages.indices, id: \.self) { index in
+                    IntroPage(config: presenter.pages[index].config)
+                        .tag(index)
                 }
-                .tabViewStyle(.page(indexDisplayMode: .always))
+            }
+            .tabViewStyle(.page(indexDisplayMode: .always))
 
-                if presenter.isLastPage {
-                    Button {
-                        presenter.onGetStartedPressed()
-                    } label: {
-                        Text("Başla")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(__AppName__Design.Accent.primary)
-                            .foregroundStyle(__AppName__Design.Background.primary)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                    }
-                    .padding(.horizontal, 24)
-                    .padding(.bottom, 32)
+            if presenter.isLastPage {
+                Button {
+                    presenter.onGetStartedPressed()
+                } label: {
+                    Text("Başla")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(__AppName__Design.Accent.primary)
+                        .foregroundStyle(__AppName__Design.Background.primary)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
+                .padding(.horizontal, 24)
+                .padding(.bottom, 32)
+                .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
         .animation(.easeInOut, value: presenter.isLastPage)

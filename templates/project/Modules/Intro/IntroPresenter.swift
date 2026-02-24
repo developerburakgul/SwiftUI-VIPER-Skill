@@ -15,7 +15,11 @@ class IntroPresenter: ObservableObject {
 
     // MARK: - Published Properties
     @Published var currentPage: Int = 0
-    @Published private(set) var pages: [IntroScreen.IntroPageEntity] = []
+    @Published private(set) var pages: [IntroScreen.IntroPageEntity] = [
+        .init(config: .init(icon: "star.fill", title: "Hoş Geldiniz", description: "Uygulama tanıtım metni 1")),
+        .init(config: .init(icon: "heart.fill", title: "Keşfedin", description: "Uygulama tanıtım metni 2")),
+        .init(config: .init(icon: "bolt.fill", title: "Başlayın", description: "Uygulama tanıtım metni 3"))
+    ]
 
     // MARK: - Init
     init(
@@ -26,12 +30,6 @@ class IntroPresenter: ObservableObject {
         self.interactor = interactor
         self.router = router
         self.entity = entity
-
-        self.pages = [
-            .init(config: .init(icon: "star.fill", title: "Hoş Geldiniz", description: "Uygulama tanıtım metni 1")),
-            .init(config: .init(icon: "heart.fill", title: "Keşfedin", description: "Uygulama tanıtım metni 2")),
-            .init(config: .init(icon: "bolt.fill", title: "Başlayın", description: "Uygulama tanıtım metni 3"))
-        ]
     }
 
     // MARK: - Actions
