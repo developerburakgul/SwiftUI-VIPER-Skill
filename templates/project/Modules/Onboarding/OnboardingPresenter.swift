@@ -30,7 +30,7 @@ class OnboardingPresenter: ObservableObject {
 
     func onCompletePressed() {
         interactor.markOnboardingComplete()
-        router.showTabbarScreen()
+        router.showTabbarScreen(TabbarEntity())
     }
 }
 

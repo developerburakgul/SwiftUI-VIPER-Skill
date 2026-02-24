@@ -33,9 +33,9 @@ class SplashPresenter: ObservableObject {
 
         if interactor.isOnboardingComplete {
             let entity = TabbarEntity(initialTab: interactor.lastSelectedTab())
-            router.showTabbarScreen(entity: entity)
+            router.showTabbarScreen(entity)
         } else {
-            router.showOnboardingScreen()
+            router.showOnboardingScreen(OnboardingEntity())
         }
     }
 }
