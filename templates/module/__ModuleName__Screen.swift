@@ -1,18 +1,18 @@
 //
-//  ___VARIABLE_moduleName:identifier___Screen.swift
-//  Created by ___USERNAME___ on ___DATE___
+//  __ModuleName__Screen.swift
+//  Created by __USERNAME__ on __DATE__
 //
 
 import SwiftUI
 
-struct ___VARIABLE_moduleName:identifier___Screen: View {
+struct __ModuleName__Screen: View {
 
-    @StateObject var presenter: ___VARIABLE_moduleName:identifier___Presenter
+    @StateObject var presenter: __ModuleName__Presenter
 
     var body: some View {
         contentView
 	    .task {
-            
+
 	    }
         .onAppear {
 
@@ -23,7 +23,7 @@ struct ___VARIABLE_moduleName:identifier___Screen: View {
     }
 
     private var contentView: some View {
-        Text("___VARIABLE_moduleName:identifier___")
+        Text("__ModuleName__")
     }
 }
 
@@ -32,6 +32,6 @@ struct ___VARIABLE_moduleName:identifier___Screen: View {
     let builder = CoreBuilder(interactor: CoreInteractor(container: container))
 
     RouterView { router in
-        builder.___VARIABLE_moduleName:identifier___Screen(router: router)
+        builder.__moduleName__Screen(router: router)
     }
 }

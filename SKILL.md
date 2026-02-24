@@ -129,11 +129,11 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 ### 2. "Create new module/screen" / "Yeni modül/ekran oluştur"
 
 **Steps:**
-1. Read `xctemplate/___VARIABLE_moduleName:identifier___/` for all 5 template files
+1. Read `templates/module/` for all 5 template files
 2. Read `references/naming.md` for naming conventions
 3. Ask user for: Module name (e.g., "Settings", "Receipt")
 4. Create folder: `Modules/{ModuleName}/`
-5. Generate 5 files from templates, replacing `___VARIABLE_moduleName:identifier___` placeholder:
+5. Generate 5 files from templates, replacing `__ModuleName__` placeholder:
    - `{ModuleName}Screen.swift`
    - `{ModuleName}Presenter.swift`
    - `{ModuleName}Interactor.swift`
@@ -143,7 +143,7 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 7. **Update CoreBuilder.swift** — Add factory method
 8. **Update CoreRouter.swift** — Add navigation method (if needed). See `references/swiftful-routing.md` for showScreen/showModal/showAlert API details
 
-**Template files to read:** `xctemplate/___VARIABLE_moduleName:identifier___/*`
+**Template files to read:** `templates/module/*`
 
 ---
 
@@ -160,7 +160,18 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    - `Entity/{SubviewName}Entity.swift`
    - `Entity/{SubviewName}Binding.swift`
    - `Entity/{SubviewName}Config.swift`
-5. **Update Presenter** — Add entity property and action handler
+5. **Update Presenter** — Aşağıdaki 3 eklemeyi yap:
+   a. `@Published var {subviewName}Entity: {ScopeName}.{SubviewName}Entity` property ekle (Published Properties bölümüne)
+   b. `init` içinde entity'yi başlat: `self.{subviewName} = .init(binding: .init(...), config: .init(...))`
+   c. Action handler metodu ekle (Actions bölümüne):
+      ```swift
+      func on{SubviewName}Action(_ action: {ScopeName}.{SubviewName}.Action) {
+          switch action {
+          case .didTapXxx:
+              break
+          }
+      }
+      ```
 
 #### 3b. Common Subview (reusable)
 1. Read `templates/subview/common/` for all 4 template files

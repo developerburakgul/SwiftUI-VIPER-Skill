@@ -34,14 +34,11 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
 │   └── swiftful-routing.md     # SwiftfulRouting navigation API and patterns
 ├── templates/
 │   ├── project/                # New project boilerplate (App.swift, CoreRIB, Dependencies, project.yml)
+│   ├── module/                 # VIPER module templates (Screen, Presenter, Interactor, Router, Entity)
 │   ├── service/                # Service domain templates (Manager, Protocol, Mock)
 │   └── subview/
 │       ├── scoped/             # Screen-specific subview templates
 │       └── common/             # Reusable subview templates
-├── xctemplate/                 # Xcode File Template format for VIPER modules (5 files)
-│   ├── ___VARIABLE_moduleName:identifier___/   # Screen, Presenter, Interactor, Router, Entity
-│   ├── ScopedSubview.xctemplate/
-│   └── CommonSubview.xctemplate/
 └── scripts/
     ├── create_project.sh       # Scaffold full project
     ├── create_module.sh        # Add VIPER module to existing project
@@ -73,7 +70,7 @@ The `SKILL.md` frontmatter defines trigger keywords. When Claude detects a match
 
 1. Read the relevant **templates** and **references** for the workflow (project/module/subview/service)
 2. Ask the user for required parameters (app name, module name, etc.)
-3. Generate files by replacing placeholders (`__AppName__`, `___VARIABLE_moduleName:identifier___`, etc.)
+3. Generate files by replacing placeholders (`__AppName__`, `__ModuleName__`, etc.)
 4. After module/service creation, remind to update CoreBuilder, CoreRouter, CoreInteractor, and Dependencies as needed
 
 ## SPM Dependencies (in Generated Projects)

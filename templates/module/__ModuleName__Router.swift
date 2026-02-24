@@ -1,19 +1,19 @@
 //
-//  ___VARIABLE_moduleName:identifier___Router.swift
-//  Created by ___USERNAME___ on ___DATE___
+//  __ModuleName__Router.swift
+//  Created by __USERNAME__ on __DATE__
 //
 import Foundation
 import SwiftfulRouting
 
 @MainActor
-protocol ___VARIABLE_moduleName:identifier___Router {
+protocol __ModuleName__Router {
     /// Define the navigation this module needs from CoreRouter
     /// Example: func showDetailScreen(entity: DetailEntity)
     func showNextScreen()
 }
 
 // TODO: Move the implementation to CoreRouter
-extension CoreRouter: ___VARIABLE_moduleName:identifier___Router {
+extension CoreRouter: __ModuleName__Router {
     func showNextScreen() {
 
     }

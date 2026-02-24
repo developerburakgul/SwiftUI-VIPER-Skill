@@ -1,13 +1,13 @@
 //
-//  ___VARIABLE_moduleName:identifier___Entity.swift
-//  Created by ___USERNAME___ on ___DATE___
+//  __ModuleName__Entity.swift
+//  Created by __USERNAME__ on __DATE__
 //
 
 import Foundation
 
 /// Parameters passed from another module via CoreBuilder
 /// Example: builder.splashScreen(router: router, entity: SplashEntity(userId: "123"))
-struct ___VARIABLE_moduleName:identifier___Entity {
+struct __ModuleName__Entity {
     /// let userId: String
     /// let productName: String
 }
