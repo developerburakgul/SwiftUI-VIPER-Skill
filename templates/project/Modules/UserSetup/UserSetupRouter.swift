@@ -1,5 +1,5 @@
 //
-//  OnboardingRouter.swift
+//  UserSetupRouter.swift
 //  Created by __Username__ on __Date__
 //
 
@@ -7,8 +7,8 @@ import Foundation
 import SwiftfulRouting
 
 @MainActor
-protocol OnboardingRouter {
+protocol UserSetupRouter {
     func showTabbarScreen(_ entity: TabbarEntity)
 }
 
-extension CoreRouter: OnboardingRouter { }
+extension CoreRouter: UserSetupRouter { }

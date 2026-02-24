@@ -1,10 +1,10 @@
 //
-//  OnboardingEntity.swift
+//  UserSetupEntity.swift
 //  Created by __Username__ on __Date__
 //
 
 import Foundation
 
-struct OnboardingEntity {
+struct UserSetupEntity {
 
 }

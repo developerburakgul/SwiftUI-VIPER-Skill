@@ -28,9 +28,19 @@ struct CoreBuilder {
         )
     }
 
-    func onboardingScreen(router: Router, entity: OnboardingEntity = OnboardingEntity()) -> some View {
-        OnboardingScreen(
-            presenter: OnboardingPresenter(
+    func userSetupScreen(router: Router, entity: UserSetupEntity = UserSetupEntity()) -> some View {
+        UserSetupScreen(
+            presenter: UserSetupPresenter(
+                interactor: interactor,
+                router: CoreRouter(router: router, builder: self),
+                entity: entity
+            )
+        )
+    }
+
+    func introScreen(router: Router, entity: IntroEntity = IntroEntity()) -> some View {
+        IntroScreen(
+            presenter: IntroPresenter(
                 interactor: interactor,
                 router: CoreRouter(router: router, builder: self),
                 entity: entity

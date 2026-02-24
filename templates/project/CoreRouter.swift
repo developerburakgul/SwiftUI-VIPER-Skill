@@ -13,10 +13,18 @@ struct CoreRouter {
 
     // MARK: - Segues
 
-    func showOnboardingScreen(_ entity: OnboardingEntity = OnboardingEntity()) {
-        router.showModule(.opacity, id: "onboarding") { _ in
+    func showUserSetupScreen(_ entity: UserSetupEntity = UserSetupEntity()) {
+        router.showModule(.opacity, id: "userSetup") { _ in
             RouterView(addNavigationStack: false) { router in
-                builder.onboardingScreen(router: router, entity: entity)
+                builder.userSetupScreen(router: router, entity: entity)
+            }
+        }
+    }
+
+    func showIntroScreen(_ entity: IntroEntity = IntroEntity()) {
+        router.showModule(.opacity, id: "intro") { _ in
+            RouterView(addNavigationStack: false) { router in
+                builder.introScreen(router: router, entity: entity)
             }
         }
     }

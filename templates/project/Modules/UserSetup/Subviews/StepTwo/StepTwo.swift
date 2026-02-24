@@ -1,50 +1,47 @@
 //
-//  OnboardingScreen.swift
+//  StepTwo.swift
 //  Created by __Username__ on __Date__
 //
 
 import SwiftUI
-import SwiftfulRouting
 
-struct OnboardingScreen: View {
+extension UserSetupScreen {
 
-    @StateObject var presenter: OnboardingPresenter
+    struct StepTwo: View, @MainActor Equatable {
 
-    var body: some View {
-        contentView
-            .task {
+        enum Action {
+            case didTapNext
+        }
 
-            }
-    }
+        @Binding var binding: StepTwoEntity.Binding
+        let config: StepTwoEntity.Config
+        let onAction: (Action) -> Void
 
-    private var contentView: some View {
-        ZStack {
-            __AppName__Design.Background.primary.ignoresSafeArea()
-
+        var body: some View {
             VStack(spacing: 24) {
                 Spacer()
 
-                Image(systemName: "hand.wave.fill")
-                    .font(.system(size: 64))
-                    .foregroundStyle(__AppName__Design.Accent.primary)
-
-                Text("__AppName__'a Hoş Geldiniz")
+                Text(config.title)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundStyle(__AppName__Design.Foreground.primary)
 
-                Text("Başlamak için aşağıdaki butona tıklayın.")
+                Text(config.subtitle)
                     .font(.body)
                     .foregroundStyle(__AppName__Design.Foreground.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 32)
 
+                TextField("Metin girin", text: $binding.inputText)
+                    .textFieldStyle(.roundedBorder)
+                    .padding(.horizontal, 24)
+
                 Spacer()
 
                 Button {
-                    presenter.onCompletePressed()
+                    onAction(.didTapNext)
                 } label: {
-                    Text("Başla")
+                    Text("İleri")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -56,14 +53,10 @@ struct OnboardingScreen: View {
                 .padding(.bottom, 32)
             }
         }
-    }
-}
 
-#Preview {
-    let container = DevPreview.shared.container
-    let builder = CoreBuilder(interactor: CoreInteractor(container: container))
-
-    RouterView { router in
-        builder.onboardingScreen(router: router)
+        static func == (lhs: StepTwo, rhs: StepTwo) -> Bool {
+            lhs.binding == rhs.binding
+            && lhs.config == rhs.config
+        }
     }
 }
