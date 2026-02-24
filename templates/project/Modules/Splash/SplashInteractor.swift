@@ -9,6 +9,7 @@ import Foundation
 protocol SplashInteractor {
     var isOnboardingComplete: Bool { get }
     func performStartupTasks() async
+    func lastSelectedTab() -> Int?
 }
 
 extension CoreInteractor: SplashInteractor { }

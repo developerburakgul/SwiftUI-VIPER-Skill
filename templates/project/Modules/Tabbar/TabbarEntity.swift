@@ -6,5 +6,5 @@
 import Foundation
 
 struct TabbarEntity {
-
+    var initialTab: Int?
 }

@@ -36,6 +36,16 @@ struct CoreInteractor {
         // Örnek: API config fetch, remote config, authentication check vb.
     }
 
+    // MARK: - Tab Persistence
+
+    func lastSelectedTab() -> Int? {
+        userManager.lastSelectedTab()
+    }
+
+    func saveLastSelectedTab(_ tabIndex: Int) {
+        userManager.saveLastSelectedTab(tabIndex)
+    }
+
     // MARK: - Add manager methods here
     // Each module defines a protocol for what it needs.
     // CoreInteractor conforms via extension in the module's Interactor file.

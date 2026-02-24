@@ -14,15 +14,15 @@ struct CoreRouter {
     // MARK: - Segues
 
     func showOnboardingScreen(entity: OnboardingEntity = OnboardingEntity()) {
-        router.showModule(.trailing, id: "onboarding") { _ in
+        router.showModule(.opacity, id: "onboarding") { _ in
             RouterView(addNavigationStack: false) { router in
                 builder.onboardingScreen(router: router, entity: entity)
             }
         }
     }
 
-    func showTabbarScreen(entity: TabbarEntity = TabbarEntity()) {
-        router.showModule(.trailing, id: "tabbar") { _ in
+    func showTabbarScreen(entity: TabbarEntity) {
+        router.showModule(.opacity, id: "tabbar") { _ in
             RouterView(addNavigationStack: false) { router in
                 builder.tabbarScreen(router: router, entity: entity)
             }

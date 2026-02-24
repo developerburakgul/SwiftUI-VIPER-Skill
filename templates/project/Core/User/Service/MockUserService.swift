@@ -14,4 +14,12 @@ struct MockUserService: UserServiceProtocol {
     func markOnboardingComplete() {
         // Mock: işlem yok
     }
+
+    func lastSelectedTab() -> Int? {
+        nil
+    }
+
+    func saveLastSelectedTab(_ tabIndex: Int) {
+        // Mock: işlem yok
+    }
 }

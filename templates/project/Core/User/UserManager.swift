@@ -21,4 +21,12 @@ class UserManager: ObservableObject {
         service.markOnboardingComplete()
         isOnboardingComplete = true
     }
+
+    func lastSelectedTab() -> Int? {
+        service.lastSelectedTab()
+    }
+
+    func saveLastSelectedTab(_ tabIndex: Int) {
+        service.saveLastSelectedTab(tabIndex)
+    }
 }

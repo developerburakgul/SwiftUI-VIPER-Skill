@@ -8,7 +8,13 @@ import SwiftfulRouting
 
 @MainActor
 protocol OnboardingRouter {
-    func showTabbarScreen()
+    func showTabbarScreen(entity: TabbarEntity)
+}
+
+extension OnboardingRouter {
+    func showTabbarScreen() {
+        showTabbarScreen(entity: TabbarEntity())
+    }
 }
 
 extension CoreRouter: OnboardingRouter { }

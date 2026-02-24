@@ -33,6 +33,18 @@ class TabbarPresenter: ObservableObject {
         self.router = router
         self.entity = entity
         self.builder = builder
+
+        // Entity'den gelen başlangıç tab'ını yükle
+        if let tabIndex = entity.initialTab,
+           let tab = TabbarTab(rawValue: tabIndex) {
+            self.selectedTab = tab
+        }
+    }
+
+    // MARK: - Actions
+
+    func onTabChanged(_ tab: TabbarTab) {
+        interactor.saveLastSelectedTab(tab.rawValue)
     }
 
     // MARK: - Tab Builders

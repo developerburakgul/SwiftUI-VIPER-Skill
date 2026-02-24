@@ -7,7 +7,7 @@ import Foundation
 
 @MainActor
 protocol TabbarInteractor {
-
+    func saveLastSelectedTab(_ tabIndex: Int)
 }
 
 extension CoreInteractor: TabbarInteractor { }

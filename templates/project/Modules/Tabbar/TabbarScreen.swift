@@ -36,6 +36,9 @@ struct TabbarScreen: View {
             }
             .tag(TabbarTab.settings)
         }
+        .onChange(of: presenter.selectedTab) { _, newTab in
+            presenter.onTabChanged(newTab)
+        }
     }
 }
 

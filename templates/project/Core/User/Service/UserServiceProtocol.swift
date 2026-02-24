@@ -8,4 +8,6 @@ import Foundation
 protocol UserServiceProtocol: Sendable {
     func isOnboardingComplete() -> Bool
     func markOnboardingComplete()
+    func lastSelectedTab() -> Int?
+    func saveLastSelectedTab(_ tabIndex: Int)
 }
