@@ -47,8 +47,19 @@ ThemeStore.shared.theme = .dark
 
 - `init` **internal** erişim seviyesinde — dışarıdan yalnızca `ThemeStore.shared` kullanılabilir
 - Tema değiştiğinde `didSet` tetiklenir → UserDefaults'a kaydeder + `applyInterfaceStyle()` çağırır
-- `applyInterfaceStyle()` tüm `connectedScenes` window'larını iterate edip `overrideUserInterfaceStyle` set eder
+- `applyInterfaceStyle()` **public** — tüm `connectedScenes` window'larını iterate edip `overrideUserInterfaceStyle` set eder
 - UserDefaults key: `"app_theme"` (hardcoded, override edilemez)
+
+### Startup'ta tema uygulama
+
+`ThemeStore` init olduğunda `applyInterfaceStyle()` çağrılır ama henüz window'lar hazır değildir. Bu yüzden App entry point'te scene hazır olduktan sonra tekrar çağrılmalıdır:
+
+```swift
+WindowGroup {
+    delegate.builder.appView()
+        .task { ThemeStore.shared.applyInterfaceStyle() }
+}
+```
 
 ### Ayarlar ekranı örneği
 

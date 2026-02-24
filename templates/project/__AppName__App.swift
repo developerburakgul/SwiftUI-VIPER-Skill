@@ -19,6 +19,7 @@ struct __AppName__App: App {
     var body: some Scene {
         WindowGroup {
             delegate.builder.appView()
+                .task { ThemeStore.shared.applyInterfaceStyle() }
         }
     }
 }
