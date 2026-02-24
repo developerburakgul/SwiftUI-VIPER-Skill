@@ -77,7 +77,7 @@ The `SKILL.md` frontmatter defines trigger keywords. When Claude detects a match
 
 | Package | Modules | Purpose |
 |---------|---------|---------|
-| **BurakKit** (0.1.0) | `DependencyContainer` | DI container for resolving managers |
+| **BurakKit** (0.1.2) | `DependencyContainer` | DI container for resolving managers |
 | | `DynamicColor` | Theme-aware colors (`@DynamicColor`, `ThemeStore`, `Color(hex:)`) |
 | **SwiftfulRouting** (6.0.0+) | — | Navigation (`RouterView`, `AnyRouter`, `.showScreen(.push/.sheet/.fullScreenCover)`) |
 

@@ -284,6 +284,6 @@ Read `references/dynamic-color.md` for `@DynamicColor`, `ThemeStore`, `Color.ini
 
 | Package | Version | Modules | Usage |
 |---------|---------|---------|-------|
-| BurakKit | 0.1.0 | `DependencyContainer` | DI container for resolving managers |
+| BurakKit | 0.1.2 | `DependencyContainer` | DI container for resolving managers |
 | | | `DynamicColor` | Theme-aware colors (`@DynamicColor`), `ThemeStore`, `AppTheme`, `Color.init(hex:)` |
 | SwiftfulRouting | 6.0.0+ | — | Navigation (`RouterView`, `AnyRouter`, `.showScreen`) |
