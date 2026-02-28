@@ -30,3 +30,18 @@ extension __ScopeName__ {
         }
     }
 }
+
+#Preview {
+    struct Preview: View {
+        @State var binding = __ScopeName__.__ViewName__Entity.Binding()
+
+        var body: some View {
+            __ScopeName__.__ViewName__(
+                binding: $binding,
+                config: .init(),
+                onAction: { _ in }
+            )
+        }
+    }
+    return Preview()
+}

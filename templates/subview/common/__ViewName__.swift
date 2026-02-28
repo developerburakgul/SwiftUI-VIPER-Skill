@@ -27,3 +27,18 @@ struct __ViewName__: View, @MainActor Equatable {
         && lhs.config == rhs.config
     }
 }
+
+#Preview {
+    struct Preview: View {
+        @State var binding = __ViewName__Entity.Binding()
+
+        var body: some View {
+            __ViewName__(
+                binding: $binding,
+                config: .init(),
+                onAction: { _ in }
+            )
+        }
+    }
+    return Preview()
+}
