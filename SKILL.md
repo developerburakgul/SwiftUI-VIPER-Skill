@@ -137,6 +137,7 @@ View ←→ Presenter ←→ Interactor(protocol) → CoreInteractor → Manager
    │   │           ├── UserServiceProtocol.swift
    │   │           ├── UserService.swift
    │   │           └── MockUserService.swift
+   │   ├── Assets.xcassets/              ← templates/project/Assets.xcassets (AccentColor, AppIcon)
    │   ├── Info.plist
    │   ├── Components/
    │   │   ├── Views/
@@ -284,6 +285,6 @@ Read `references/dynamic-color.md` for `@DynamicColor`, `ThemeStore`, `Color.ini
 
 | Package | Version | Modules | Usage |
 |---------|---------|---------|-------|
-| BurakKit | 0.1.2 | `DependencyContainer` | DI container for resolving managers |
+| BurakKit | 0.1.3 | `DependencyContainer` | DI container for resolving managers |
 | | | `DynamicColor` | Theme-aware colors (`@DynamicColor`), `ThemeStore`, `AppTheme`, `Color.init(hex:)` |
 | SwiftfulRouting | 6.0.0+ | — | Navigation (`RouterView`, `AnyRouter`, `.showScreen`) |

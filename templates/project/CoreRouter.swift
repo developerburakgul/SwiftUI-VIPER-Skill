@@ -14,7 +14,7 @@ struct CoreRouter {
     // MARK: - Segues
 
     func showUserSetupScreen(_ entity: UserSetupEntity = UserSetupEntity()) {
-        router.showModule(.opacity, id: "userSetup") { _ in
+        router.showModule(.identity, id: "userSetup") { _ in
             RouterView(addNavigationStack: false) { router in
                 builder.userSetupScreen(router: router, entity: entity)
             }
@@ -22,7 +22,7 @@ struct CoreRouter {
     }
 
     func showIntroScreen(_ entity: IntroEntity = IntroEntity()) {
-        router.showModule(.opacity, id: "intro") { _ in
+        router.showModule(.identity, id: "intro") { _ in
             RouterView(addNavigationStack: false) { router in
                 builder.introScreen(router: router, entity: entity)
             }
@@ -30,7 +30,7 @@ struct CoreRouter {
     }
 
     func showTabbarScreen(_ entity: TabbarEntity = TabbarEntity()) {
-        router.showModule(.opacity, id: "tabbar") { _ in
+        router.showModule(.identity, id: "tabbar") { _ in
             RouterView(addNavigationStack: false) { router in
                 builder.tabbarScreen(router: router, entity: entity)
             }

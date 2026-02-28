@@ -131,6 +131,9 @@ cp "$TEMPLATE_DIR/Info.plist" "$APP_NAME/$APP_NAME/Info.plist"
 # Design dosyası
 replace_placeholders "$TEMPLATE_DIR/Design/__AppName__Design.swift" > "$APP_NAME/$APP_NAME/Design/${APP_NAME}Design.swift"
 
+# Asset catalog
+cp -R "$TEMPLATE_DIR/Assets.xcassets" "$APP_NAME/$APP_NAME/Assets.xcassets"
+
 echo "✅ Project structure created!"
 
 # Try to run xcodegen
