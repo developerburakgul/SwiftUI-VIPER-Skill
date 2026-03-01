@@ -209,17 +209,50 @@ Multiple previews for different states:
 - `#Preview("Loading")` — Slow loading mock
 - `#Preview("Error")` — Error state
 
----
+### Subview Preview
 
-## Important Patterns Summary
+Subview'lar `@Binding` aldığı için wrapper struct gerekir. Entity oluşturup `binding` ve `config`'i oradan geçiriyoruz:
 
-1. **ObservableObject, NOT @Observable**
-2. **@StateObject var presenter, NOT @State**
-3. **struct Core types** — CoreInteractor, CoreRouter, CoreBuilder are structs
-4. **Entity → Presenter** — Entity is passed to Presenter, not View
-5. **Protocol conformance via extension** — `extension CoreInteractor: {Module}Interactor { }`
-6. **SwiftfulRouting** — `RouterView`, `Router`, `.showScreen(.push/.sheet/.fullScreenCover)`
-7. **Action enum > closures** — Single `onAction: (Action) -> Void`
-8. **Subview = zero business logic** — Logic stays in Presenter
-9. **Mock-first** — Every service has a Mock version
-10. **Screen suffix** — `{Module}Screen`, not `{Module}View`
+```swift
+// Scoped subview
+#Preview {
+    struct Preview: View {
+        @State var entity = SomeScreen.SomeSubviewEntity(
+            binding: .init(),
+            config: .init()
+        )
+
+        var body: some View {
+            SomeScreen.SomeSubview(
+                binding: $entity.binding,
+                config: entity.config,
+                onAction: { _ in }
+            )
+        }
+    }
+    return Preview()
+}
+
+// Common subview
+#Preview {
+    struct Preview: View {
+        @State var entity = SharedInputViewEntity(
+            binding: .init(),
+            config: .init()
+        )
+
+        var body: some View {
+            SharedInputView(
+                binding: $entity.binding,
+                config: entity.config,
+                onAction: { _ in }
+            )
+        }
+    }
+    return Preview()
+}
+```
+
+
+
+> For all code generation rules, see `references/rules.md`

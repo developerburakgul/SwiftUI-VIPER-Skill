@@ -30,12 +30,15 @@ struct __ViewName__: View, @MainActor Equatable {
 
 #Preview {
     struct Preview: View {
-        @State var binding = __ViewName__Entity.Binding()
+        @State var entity = __ViewName__Entity(
+            binding: .init(),
+            config: .init()
+        )
 
         var body: some View {
             __ViewName__(
-                binding: $binding,
-                config: .init(),
+                binding: $entity.binding,
+                config: entity.config,
                 onAction: { _ in }
             )
         }

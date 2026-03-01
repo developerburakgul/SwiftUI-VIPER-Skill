@@ -31,107 +31,15 @@ This is NOT classic VIPER. Key differences:
 └──────────────────────┘    └──────────────────────────────────┘
 ```
 
-## Project Folder Structure
+> Tam proje klasör yapısı için SKILL.md Workflow 1'e bak.
 
-```
-{AppName}/
-├── Root/
-│   ├── {AppName}App.swift            # @main entry point
-│   ├── AppDelegate.swift             # BuildConfiguration, Dependencies init
-│   ├── CoreRIB/
-│   │   ├── CoreBuilder.swift         # SINGLE builder — all view factories
-│   │   ├── CoreInteractor.swift      # SINGLE interactor struct — all manager access
-│   │   └── CoreRouter.swift          # SINGLE router struct — all navigation
-│   └── Dependencies.swift            # DI setup, DevPreview, mock/dev/prod config
-├── Modules/                          # Feature modules (each follows VIPER)
-│   ├── Splash/                       # Giriş ekranı — her açılışta gösterilir
-│   │   ├── SplashScreen.swift
-│   │   ├── SplashPresenter.swift
-│   │   ├── SplashInteractor.swift
-│   │   ├── SplashRouter.swift
-│   │   └── SplashEntity.swift
-│   ├── Intro/                        # Tanıtım ekranları — ilk açılışta gösterilir
-│   │   ├── IntroScreen.swift
-│   │   ├── IntroPresenter.swift
-│   │   ├── IntroInteractor.swift
-│   │   ├── IntroRouter.swift
-│   │   ├── IntroEntity.swift
-│   │   └── Subviews/
-│   │       └── IntroPage/
-│   ├── UserSetup/                    # Kullanıcı kurulum — ilk açılışta Intro sonrası
-│   │   ├── UserSetupScreen.swift
-│   │   ├── UserSetupPresenter.swift
-│   │   ├── UserSetupInteractor.swift
-│   │   ├── UserSetupRouter.swift
-│   │   ├── UserSetupEntity.swift
-│   │   └── Subviews/
-│   │       ├── StepOne/
-│   │       ├── StepTwo/
-│   │       └── StepThree/
-│   ├── Tabbar/                         # TabView container — ana ekran
-│   │   ├── TabbarScreen.swift
-│   │   ├── TabbarPresenter.swift
-│   │   ├── TabbarInteractor.swift
-│   │   ├── TabbarRouter.swift
-│   │   └── TabbarEntity.swift
-│   ├── Home/                           # Tab modülü — ev ikonu
-│   │   ├── HomeScreen.swift
-│   │   ├── HomePresenter.swift
-│   │   ├── HomeInteractor.swift
-│   │   ├── HomeRouter.swift
-│   │   └── HomeEntity.swift
-│   ├── Favorites/                     # Tab modülü — kalp ikonu
-│   │   ├── FavoritesScreen.swift
-│   │   ├── FavoritesPresenter.swift
-│   │   ├── FavoritesInteractor.swift
-│   │   ├── FavoritesRouter.swift
-│   │   └── FavoritesEntity.swift
-│   ├── Settings/                      # Tab modülü — gear ikonu
-│   │   ├── SettingsScreen.swift
-│   │   ├── SettingsPresenter.swift
-│   │   ├── SettingsInteractor.swift
-│   │   ├── SettingsRouter.swift
-│   │   └── SettingsEntity.swift
-│   ├── {ModuleName}/
-│   │   ├── {ModuleName}Screen.swift
-│   │   ├── {ModuleName}Presenter.swift
-│   │   ├── {ModuleName}Interactor.swift
-│   │   ├── {ModuleName}Router.swift
-│   │   ├── {ModuleName}Entity.swift
-│   │   └── Subviews/
-│   │       └── {SubviewName}/
-│   │           ├── {SubviewName}.swift
-│   │           ├── {SubviewName}Entity.swift
-│   │           ├── {SubviewName}Binding.swift
-│   │           └── {SubviewName}Config.swift
-│   └── ...
-├── Core/                             # Service domains
-│   ├── User/                         # Default service — kullanıcı yönetimi
-│   │   ├── UserManager.swift
-│   │   └── Service/
-│   │       ├── UserServiceProtocol.swift
-│   │       ├── UserService.swift
-│   │       └── MockUserService.swift
-│   ├── {Domain}/
-│   │   ├── {Domain}Manager.swift
-│   │   ├── Models/
-│   │   │   └── {Domain}Model.swift
-│   │   └── Service/
-│   │       ├── {Domain}ServiceProtocol.swift
-│   │       └── Mock{Domain}Service.swift
-│   │       # Production service (e.g., Firebase{Domain}Service) — create manually
-│   └── ...
-├── Components/                       # Reusable UI
-│   ├── Views/
-│   ├── ViewModifiers/
-│   ├── Modals/
-│   ├── Buttons/
-│   └── Images/
-├── Design/
-│   └── {AppName}Design.swift         # App-wide color definitions
-├── Extensions/
-└── Utilities/
-```
+## SPM Dependencies
+
+| Package | Version | Modules | Usage |
+|---------|---------|---------|-------|
+| **BurakKit** | 0.1.3 | `DependencyContainer` | DI container for resolving managers |
+| | | `DynamicColor` | Theme-aware colors (`@DynamicColor`), `ThemeStore`, `AppTheme`, `Color.init(hex:)` |
+| **SwiftfulRouting** | 6.0.0+ | — | Navigation (`RouterView`, `AnyRouter`, `.showScreen`) |
 
 ## CoreBuilder Rules
 

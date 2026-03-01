@@ -33,12 +33,15 @@ extension __ScopeName__ {
 
 #Preview {
     struct Preview: View {
-        @State var binding = __ScopeName__.__ViewName__Entity.Binding()
+        @State var entity = __ScopeName__.__ViewName__Entity(
+            binding: .init(),
+            config: .init()
+        )
 
         var body: some View {
             __ScopeName__.__ViewName__(
-                binding: $binding,
-                config: .init(),
+                binding: $entity.binding,
+                config: entity.config,
                 onAction: { _ in }
             )
         }
